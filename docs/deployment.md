@@ -29,3 +29,7 @@ For rollback, use the existing service's Railway deployment history without repl
 ## Final device check
 
 The owner should reload both existing links in native iPhone Safari and check text while editing, long scratch/calendar notes, icon/header spacing, and Corners Cut. Chromium viewport and synthetic composition tests do not prove native iOS keyboard, hardware safe-area, screen-reader, or external-font behavior.
+
+## Superseded after owner scope clarification
+
+This record is historical. On November 13, 2026, approximately 11:26 Pacific, the original site was restored and this repo was disconnected from its Railway service. See [restoration.md](restoration.md). All future improvements belong to a separate site with independent storage; do not deploy this patch to the original again.

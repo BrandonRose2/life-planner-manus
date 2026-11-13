@@ -12,7 +12,7 @@ The shared build uses labelled, selectable static text and disables editing cont
 
 ## Status
 
-**Live on the existing main and shared planner as of November 13, 2026.** Private repository: https://github.com/BrandonRose2/life-planner-manus. The original uploaded source is preserved in baseline commit `81e38fc`; patch commit `b298f91` contains the implementation. There are 116 passing isolated regression assertions plus 24 passing live page/width cases. The deployed main, Corners Cut, and both shared HTML variants exactly match the tested build; saved planner contents match the pre-deployment checksum. See [validation](docs/validation.md), [deployment notes](docs/deployment.md), and [outcomes](TODO.md). Native iPhone Safari remains a final owner/device check.
+**The original site has been restored; this repository is for a separate improved version only.** Private repository: https://github.com/BrandonRose2/life-planner-manus. The earlier in-place deployment was a scope mistake. Following the owner's explicit approval, original HTML was restored and verified against baseline `81e38fc`, current planner/project data was preserved, and this repository was disconnected from the original Railway service. See [restoration](docs/restoration.md). Patch commit `b298f91`, 116 isolated regression assertions, and prior 24-case live evidence remain available for the separate version; earlier deployment reports are historical. Never deploy this code to the original domain/service/volume again.
 
 ## Build and run
 
