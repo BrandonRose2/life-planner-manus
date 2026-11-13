@@ -38,9 +38,10 @@
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);-webkit-font-smoothing:antialiased}
 button,input,textarea{font:inherit;color:inherit}
+textarea.auto-grow{display:block;min-width:0;max-width:100%;margin:0;resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere}
 :focus-visible{outline:1.5px solid var(--gold);outline-offset:2px;border-radius:4px}
 
-.banner{position:relative;height:clamp(140px,22vw,210px);overflow:hidden;
+.banner{position:relative;height:clamp(140px,22vw,210px);min-height:var(--bmin,0px);overflow:hidden;
   background:
     radial-gradient(60% 120% at 68% 100%, var(--sun) 0%, rgba(240,180,106,.35) 22%, transparent 55%),
     linear-gradient(180deg,var(--sky-top) 0%, var(--sky-mid) 78%, var(--sun) 100%);}
@@ -61,8 +62,8 @@ h1{font:500 clamp(40px,6vw,58px)/1 var(--display);margin:4px 0 0;letter-spacing:
 
 .intent{margin:26px 0 8px;border-left:1px solid var(--gold);padding-left:16px}
 .intent label{display:block}
-.intent input{width:100%;background:none;border:0;font:italic 400 22px/1.3 var(--display);color:var(--fg);padding:2px 0}
-.intent input::placeholder{color:var(--faint)}
+.intent textarea{width:100%;background:none;border:0;font:italic 400 22px/1.3 var(--display);color:var(--fg);padding:2px 0}
+.intent textarea::placeholder{color:var(--faint)}
 
 section{margin-top:44px}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;border-bottom:1px solid var(--line-soft);padding-bottom:8px;flex-wrap:wrap}
@@ -70,7 +71,7 @@ h2{font:500 28px/1.1 var(--display);margin:0;text-wrap:balance}
 .sec-head .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* ---- ruled-paper checklists ---- */
-.pad{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;align-items:start}
+.pad{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:18px;align-items:start}
 .sheet{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px 12px;min-width:0;--hl:var(--hl-green)}
 .sheet[data-color="orange"]{--hl:var(--hl-orange)}
 .sheet[data-color="green"]{--hl:var(--hl-green)}
@@ -82,21 +83,22 @@ h2{font:500 28px/1.1 var(--display);margin:0;text-wrap:balance}
 .sheet-name{flex:1;min-width:0;background:none;border:0;padding:0;font:500 23px/1.2 var(--display);color:var(--fg)}
 .stars{color:var(--hl);font-size:13px;letter-spacing:2px}
 .sheet-tools{display:flex;gap:2px;align-items:center}
+.sheet-top .hash,.sheet-top .stars,.sheet-tools{flex:none}
 .icon-btn{background:none;border:0;color:var(--faint);cursor:pointer;padding:3px 5px;border-radius:4px;font-size:13px;line-height:1}
 .icon-btn:hover{color:var(--fg)}
 .icon-btn.danger:hover{color:var(--warn)}
 .swatch{width:12px;height:12px;border-radius:3px;background:var(--hl);border:0;cursor:pointer;padding:0;margin:0 4px}
 
 ul.lines{list-style:none;margin:0;padding:0}
-.ln{display:flex;align-items:center;gap:10px;height:36px;border-bottom:1px solid var(--rule)}
+.ln{display:flex;align-items:center;gap:10px;min-height:36px;border-bottom:1px solid var(--rule)}
 .box{appearance:none;flex:none;width:17px;height:17px;margin:0;border:1.5px solid var(--fg);border-radius:2px;cursor:pointer;display:grid;place-content:center;
   background:color-mix(in srgb,var(--hl) calc(var(--hl-alpha)*100%),transparent);box-shadow:-3px 1px 0 -1px color-mix(in srgb,var(--hl) 55%,transparent)}
 .box:checked{background:var(--hl);border-color:var(--hl)}
 .box:checked::after{content:"";width:9px;height:4.5px;border:2px solid var(--bg);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
 .box:disabled{cursor:default;opacity:.55;border-color:var(--faint)}
-.ln input.t{flex:1;min-width:0;background:none;border:0;padding:0;color:var(--fg);height:100%}
-.ln input.t::placeholder{color:var(--faint)}
-.ln.done input.t{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--fg);text-decoration-thickness:1px}
+.ln .t{flex:1;min-width:0;background:none;border:0;padding:6px 0;color:var(--fg)}
+.ln .t::placeholder{color:var(--faint)}
+.ln.done .t{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--fg);text-decoration-thickness:1px}
 .ln .x{opacity:0;transition:opacity .15s}
 .ln:hover .x,.ln .x:focus-visible{opacity:1}
 @media (hover:none){.ln .x{opacity:.55}}
@@ -109,9 +111,9 @@ ul.lines{list-style:none;margin:0;padding:0}
 .ghost:hover{color:var(--gold);border-color:var(--gold)}
 
 /* ---- today ---- */
-.today{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.today{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .today .sheet{--hl:var(--gold)}
-textarea.notes{display:block;width:100%;min-height:216px;resize:vertical;background:transparent;border:0;padding:0;color:var(--fg);
+textarea.notes{display:block;width:100%;min-height:216px;background:transparent;border:0;padding:0;color:var(--fg);
   line-height:36px;background-image:linear-gradient(transparent 35px,var(--rule) 35px);background-size:100% 36px;background-attachment:local}
 textarea.notes::placeholder{color:var(--faint)}
 .label{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;padding:6px 0 10px;border-bottom:1px solid var(--line)}
@@ -123,21 +125,21 @@ th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--rule)}
 th{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 th.today-col{color:var(--gold)}
 td.name{text-align:left;width:34%}
-td.name input{background:none;border:0;width:100%;color:var(--fg)}
+td.name textarea{background:none;border:0;width:100%;padding:0;color:var(--fg)}
 td.pct{width:120px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
 .bar{height:3px;background:var(--line);border-radius:2px;margin-top:5px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
 .habits .box{--hl:var(--gold);margin:auto}
-.add-row{display:flex;align-items:center;gap:10px;height:36px;border-bottom:1px solid var(--rule)}
-.add-row input{flex:1;min-width:0;background:none;border:0;color:var(--fg)}
-.add-row input::placeholder{color:var(--faint)}
+.add-row{display:flex;align-items:center;gap:10px;min-height:36px;border-bottom:1px solid var(--rule)}
+.add-row textarea{flex:1;min-width:0;background:none;border:0;padding:6px 0;color:var(--fg)}
+.add-row textarea::placeholder{color:var(--faint)}
 .week-nav{display:flex;align-items:center;gap:6px}
 
 /* ---- goals ---- */
-.goals{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.goal{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px}
+.goals{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:16px}
+.goal{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px;min-width:0}
 .goal .top{display:flex;gap:6px;align-items:center}
-.goal input.gt{flex:1;min-width:0;background:none;border:0;font:500 21px/1.2 var(--display);color:var(--fg);padding:0}
+.goal .gt{flex:1;min-width:0;background:none;border:0;font:500 21px/1.2 var(--display);color:var(--fg);padding:0}
 .goal .row{display:flex;align-items:center;gap:12px;margin-top:14px}
 .goal input[type=range]{flex:1;accent-color:var(--gold);min-width:0}
 .goal .p{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);width:38px;text-align:right}
@@ -146,8 +148,8 @@ td.pct{width:120px;text-align:right;font-variant-numeric:tabular-nums;color:var(
 
 /* ---- focus + time blocks ---- */
 .one{border-left:2px solid var(--gold);padding:4px 0 4px 18px;margin-bottom:22px}
-.one input{width:100%;background:none;border:0;padding:4px 0 0;font:500 clamp(26px,3.6vw,36px)/1.15 var(--display);color:var(--fg)}
-.one input::placeholder{color:var(--faint);font-style:italic}
+.one textarea{width:100%;background:none;border:0;padding:4px 0 0;font:500 clamp(26px,3.6vw,36px)/1.15 var(--display);color:var(--fg)}
+.one textarea::placeholder{color:var(--faint);font-style:italic}
 .one .hint{font-size:12px;color:var(--muted);margin-top:4px}
 .focus-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px;align-items:start}
 .nowcard{border:1px solid var(--gold);border-radius:12px;padding:18px 20px;background:linear-gradient(160deg,var(--gold-soft),transparent 70%);min-width:0}
@@ -174,11 +176,6 @@ td.pct{width:120px;text-align:right;font-variant-numeric:tabular-nums;color:var(
 .brow .bt::placeholder{color:var(--faint)}
 .brow .end{font:400 11px var(--mono);color:var(--faint);white-space:nowrap}
 .block-acts{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
-/* Phones: one-line boxes show their full text wrapped; tapping it brings back the edit box. */
-.wrap-text{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere;cursor:text}
-.wrap-text[hidden]{display:none!important}
-.wrap-off{position:absolute!important;opacity:0!important;pointer-events:none!important;width:1px!important;height:1px!important}
-@media (max-width:760px){.ln{height:auto;min-height:36px}.intent,.one,.ln,.brow,.sheet-head{position:relative}}
 @media (max-width:760px){.focus-grid{grid-template-columns:1fr}.brow{flex-wrap:wrap;padding-block:6px}.brow .bt{flex-basis:100%;order:9}}
 
 /* ---- photo backdrop ---- */
@@ -278,6 +275,9 @@ footer{margin-top:56px;font-size:12px;color:var(--faint);text-align:center}
   .today{grid-template-columns:1fr}
   .head{margin-top:-40px;gap:14px}
   .clock{width:80px;height:80px}
+  .titles{min-width:0}
+  .titles h1{overflow-wrap:normal}
+  .head>.status{flex:0 0 100%;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -304,7 +304,7 @@ footer{margin-top:56px;font-size:12px;color:var(--faint);text-align:center}
 
   <div class="intent">
     <label for="intention" class="eyebrow">Intention for today</label>
-    <input id="intention" placeholder="What would make today well spent?" autocomplete="off">
+    <textarea class="auto-grow single-line" rows="1" wrap="soft" id="intention" placeholder="What would make today well spent?" autocomplete="off"></textarea>
   </div>
 
   <aside class="projects" id="projects" aria-label="Projects"></aside>
@@ -352,7 +352,7 @@ footer{margin-top:56px;font-size:12px;color:var(--faint);text-align:center}
 .cal-add #calText{flex:1 1 100%;min-width:0}
 .cal-nl{display:block;padding:8px 0}
 .cal-nl b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
-.cal-note{display:block;width:100%;min-height:120px;resize:vertical;background:transparent;border:0;color:var(--fg);font:inherit;font-size:13.5px;padding:4px 0}
+.cal-note{display:block;width:100%;min-height:120px;background:transparent;border:0;color:var(--fg);font:inherit;font-size:13.5px;padding:4px 0}
 .cal-d .ev.done,.cal-items li.done .tx{text-decoration:line-through;opacity:.6}
 .proj-btn{position:relative}
 .proj-btn .tl{position:absolute;top:-6px;right:-6px;width:12px;height:12px;border-radius:50%;--c:#2fd36b;background:var(--c);box-shadow:0 0 0 2px var(--bg),0 0 9px var(--c);animation:tlpulse 1.6s ease-in-out infinite}
@@ -455,6 +455,17 @@ function viewedMonday(){const d=new Date();const wd=(d.getDay()+6)%7;d.setDate(d
 let S=null, docRef=null, saveTimer=null;
 const $=s=>document.querySelector(s);
 const app=$("#app");
+const GROW_SEL="textarea.auto-grow", SINGLE_SEL="textarea.single-line";
+// Layout only: measuring an editor never changes planner data or schedules a save.
+function growEditor(el){
+  if(!el.isConnected||!el.clientWidth)return;
+  const cs=getComputedStyle(el),border=(parseFloat(cs.borderTopWidth)||0)+(parseFloat(cs.borderBottomWidth)||0);
+  el.style.height="0px"; // reset before measuring so deleted text can shrink again
+  el.style.height=Math.ceil(Math.max(parseFloat(cs.minHeight)||0,el.scrollHeight+border))+"px";
+}
+function growEditors(){document.querySelectorAll(GROW_SEL).forEach(growEditor)}
+let growFrame=0;
+function queueEditorGrowth(){if(growFrame)return;growFrame=requestAnimationFrame(()=>{growFrame=0;growEditors()})}
 const setStatus=t=>{$("#saveState").innerHTML=t};
 let toastT;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),1800)}
 
@@ -558,7 +569,7 @@ function blocksHTML(){
       <input type="time" step="900" id="bs-${b.id}" data-act="bstart" data-b="${b.id}" value="${b.start}" aria-label="Start time">
       <select id="bd-${b.id}" data-act="bdur" data-b="${b.id}" aria-label="Length">${[30,45,60,90,120,150,180].map(m=>`<option value="${m}" ${+b.dur===m?"selected":""}>${dur(m)}</option>`).join("")}</select>
       <span class="end">→ ${nice(e)}</span>
-      <input class="bt" id="bt-${b.id}" data-act="btitle" data-b="${b.id}" value="${esc(b.t)}" placeholder="The one task for this block" autocomplete="off" aria-label="Block task">
+      <textarea class="bt auto-grow single-line" rows="1" wrap="soft" id="bt-${b.id}" data-act="btitle" data-b="${b.id}" placeholder="The one task for this block" autocomplete="off" aria-label="Block task">${esc(b.t)}</textarea>
       <button class="icon-btn danger" data-act="bdel" data-b="${b.id}" aria-label="Delete block">✕</button>
     </li>`}).join("");
 }
@@ -665,11 +676,12 @@ function placePhoto(p){
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("#banner [data-act=\"bdAdjust\"]");if(b)openAdjust()});
 // Keep the banner tall enough that the quick-link icons (and the controls, on phones) are never cut off or overlapped.
 function fitBanner(){const ban=$("#banner"),q=$("#quick");if(!ban||!q)return;
-  let need=q.offsetHeight+(parseFloat(getComputedStyle(q).top)||14)+12;
+  let need=Math.max(0,q.getBoundingClientRect().bottom-ban.getBoundingClientRect().top)+12;
+  const head=$(".head"),overlap=head?Math.max(0,-(parseFloat(getComputedStyle(head).marginTop)||0)):0;
   const c=ban.querySelector("#ytCtl,#phCtl");
   if(typeof ResizeObserver!=="undefined"){if(!q._ro){q._ro=new ResizeObserver(fitBanner);q._ro.observe(q)}if(c&&!c._ro){c._ro=new ResizeObserver(fitBanner);c._ro.observe(c)}}
   if(c&&matchMedia("(max-width:760px)").matches){c.style.top=Math.ceil(need-4)+"px";need+=c.offsetHeight+56}else if(c)c.style.top="";
-  ban.style.setProperty("--bmin",Math.ceil(need)+"px")}
+  ban.style.setProperty("--bmin",Math.ceil(need+overlap)+"px")}
 addEventListener("resize",fitBanner);addEventListener("load",fitBanner);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitBanner);setTimeout(fitBanner,1200);setTimeout(fitBanner,3000);
 function rmPh(){const o=document.getElementById("phCtl");if(o)o.remove()}
 function showPh(){const ban=$("#banner");if(!ban)return;if(!document.getElementById("phCtl")){const c=document.createElement("div");c.id="phCtl";c.innerHTML=`<button type="button" data-act="bdAdjust" title="Adjust position, zoom and height" aria-label="Adjust backdrop position">⤧ Adjust</button>`;ban.appendChild(c)}ban.removeAttribute("aria-hidden");fitBanner();requestAnimationFrame(fitBanner)}
@@ -883,8 +895,8 @@ function shopURL(list,t){t=(t||"").trim();if(!t)return "";const q=encodeURICompo
     if(new RegExp("\\b"+lab.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b").test(nl)){try{const h=new URL(l.url).hostname.replace(/^www\./,"");return "https://www.google.com/search?q="+q+"+site%3A"+h}catch(e){}}}
   if(list.shop)return "https://www.amazon.com/s?k="+q;return ""}
 function syncShop(lid){const list=L(lid);if(!list)return;for(const it of list.items){const inp=document.getElementById("it-"+lid+"-"+it.id);if(!inp)continue;const li=inp.closest("li");let a=li.querySelector("a.shop");const u=shopURL(list,it.t);
-  if(!u){if(a)a.remove();continue}
-  if(!a){a=document.createElement("a");a.className="shop";a.target="_blank";a.rel="noopener";a.textContent="Find ↗";li.insertBefore(a,li.querySelector("button.x"))}
+  if(!u){if(a){a.remove();if(inp.matches(GROW_SEL))growEditor(inp)}continue}
+  if(!a){a=document.createElement("a");a.className="shop";a.target="_blank";a.rel="noopener";a.textContent="Find ↗";li.insertBefore(a,li.querySelector("button.x"));if(inp.matches(GROW_SEL))growEditor(inp)}
   a.href=u}}
 /* ---------- render ---------- */
 function sheet(list){
@@ -892,18 +904,18 @@ function sheet(list){
   const blanks=Math.max(1,MIN_LINES-list.items.length);
   const rows=list.items.map(it=>`<li class="ln ${it.d?"done":""}">
       <input type="checkbox" class="box" data-act="toggle" data-l="${list.id}" data-i="${it.id}" ${it.d?"checked":""} aria-label="Mark ${esc(it.t)} done">
-      <input class="t" id="it-${list.id}-${it.id}" data-act="edit" data-l="${list.id}" data-i="${it.id}" value="${esc(it.t)}" autocomplete="off" aria-label="Item">
+      <textarea class="t auto-grow single-line" rows="1" wrap="soft" id="it-${list.id}-${it.id}" data-act="edit" data-l="${list.id}" data-i="${it.id}" autocomplete="off" aria-label="Item">${esc(it.t)}</textarea>
       ${shopURL(list,it.t)?`<a class="shop" target="_blank" rel="noopener" href="${shopURL(list,it.t)}">Find ↗</a>`:""}
       <button class="icon-btn danger x" data-act="del" data-l="${list.id}" data-i="${it.id}" aria-label="Remove ${esc(it.t)}">✕</button>
     </li>`).join("")
     + Array.from({length:blanks},(_,k)=>`<li class="ln">
       <input type="checkbox" class="box" disabled aria-hidden="true" tabindex="-1">
-      <input class="t" id="blank-${list.id}-${k}" data-act="blank" data-l="${list.id}" placeholder="${k===0&&!list.items.length?"Write something…":""}" autocomplete="off" aria-label="New item in ${esc(list.name)}">
+      <textarea class="t auto-grow single-line" rows="1" wrap="soft" id="blank-${list.id}-${k}" data-act="blank" data-l="${list.id}" placeholder="${k===0&&!list.items.length?"Write something…":""}" autocomplete="off" aria-label="New item in ${esc(list.name)}"></textarea>
     </li>`).join("");
   return `<article class="sheet" data-color="${list.color}">
     <div class="sheet-top">
       <span class="hash" aria-hidden="true">##</span>
-      <input class="sheet-name" id="ln-${list.id}" data-act="rename" data-l="${list.id}" value="${esc(list.name)}" aria-label="List name">
+      <textarea class="sheet-name auto-grow single-line" rows="1" wrap="soft" id="ln-${list.id}" data-act="rename" data-l="${list.id}" aria-label="List name">${esc(list.name)}</textarea>
       ${list.star?`<span class="stars" aria-hidden="true">★★★</span>`:""}
       <span class="sheet-tools">
         <button class="swatch" data-act="color" data-l="${list.id}" aria-label="Change highlighter color" title="Highlighter color"></button>
@@ -965,7 +977,7 @@ function calendarHTML(){
       <input type="time" id="calTime" aria-label="Time (optional)">
       <select id="calCat" aria-label="Type">${CATS.filter(c=>c[0]!=="project").map(c=>`<option value="${c[0]}" ${c[0]===calLastCat?"selected":""}>${c[1]}</option>`).join("")}</select>
       <button class="solid-btn" type="submit">Add</button></form>
-    <label class="cal-nl"><b>Notes for this day</b><textarea class="cal-note" id="calnote" data-calnote="1" placeholder="Reminders, what to bring, addresses…">${esc(cd.note||"")}</textarea></label>
+    <label class="cal-nl"><b>Notes for this day</b><textarea class="cal-note auto-grow" wrap="soft" id="calnote" data-calnote="1" placeholder="Reminders, what to bring, addresses…">${esc(cd.note||"")}</textarea></label>
   </div></div></section>`;
 }
 app.addEventListener("submit",e=>{
@@ -1034,9 +1046,12 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-projact]")
   if(projEdit){const f=document.querySelector(".proj-ed input");if(f)f.focus()}});
 document.addEventListener("input",e=>{const t=e.target;if(!t.dataset||!t.dataset.proj||!S)return;const p=(S.projects||[]).find(x=>x.id===t.dataset.k);if(p){p[t.dataset.proj]=t.value;save()}});
 function render(focusId){
+  const active=document.activeElement;
+  const caret=!focusId&&active&&typeof active.selectionStart==="number"
+    ?{start:active.selectionStart,end:active.selectionEnd,direction:active.selectionDirection}:null;
   renderProjects();
   if(!window.__projInit){window.__projInit=1;setTimeout(loadProjects,0)}
-  focusId=focusId||(document.activeElement&&document.activeElement.id);
+  focusId=focusId||(active&&active.id);
   $("#intention").value=S.intention||"";
   const pr=S.priorities, prDone=pr.filter(p=>p.d&&p.t).length;
   const mon=viewedMonday(), wk=weekKey(mon), isThisWeek=weekOffset===0;
@@ -1052,7 +1067,7 @@ function render(focusId){
     <div class="sec-head"><h2>Focus</h2><span class="meta">${bl.length?`${bDone} of ${bl.length} blocks done · ${dur(planned)} planned`:"Today’s time blocks"}</span></div>
     <div class="one">
       <label class="eyebrow" for="oneThing">The one thing that brings in income</label>
-      <input id="oneThing" value="${esc(S.oneThing)}" placeholder="Name the one income project you’re finishing" autocomplete="off">
+      <textarea class="auto-grow single-line" rows="1" wrap="soft" id="oneThing" placeholder="Name the one income project you’re finishing" autocomplete="off">${esc(S.oneThing)}</textarea>
       <div class="hint">Every block today should move this forward. Everything else waits on the lists.</div>
     </div>
     <div id="dayline"></div>
@@ -1082,11 +1097,11 @@ function render(focusId){
       <div class="sheet"><span class="label">Top three priorities</span>
         <ul class="lines">${pr.map((p,i)=>`<li class="ln ${p.d?"done":""}">
           <input type="checkbox" class="box" data-act="pdone" data-i="${i}" ${p.d?"checked":""} aria-label="Priority ${i+1} done">
-          <input class="t" id="pr-${i}" data-act="ptext" data-i="${i}" value="${esc(p.t)}" placeholder="Priority ${i+1}" autocomplete="off">
+          <textarea class="t auto-grow single-line" rows="1" wrap="soft" id="pr-${i}" data-act="ptext" data-i="${i}" placeholder="Priority ${i+1}" autocomplete="off">${esc(p.t)}</textarea>
         </li>`).join("")}</ul>
       </div>
       <div class="sheet"><label class="label" for="notes">Scratch notes</label>
-        <textarea class="notes" id="notes" placeholder="Calls to make, things to remember…">${esc(S.notes)}</textarea>
+        <textarea class="notes auto-grow" wrap="soft" id="notes" placeholder="Calls to make, things to remember…">${esc(S.notes)}</textarea>
       </div>
     </div>
   </section>
@@ -1103,18 +1118,18 @@ function render(focusId){
       <table><thead><tr><th style="text-align:left">Habit</th>${DAYS.map((d,i)=>`<th class="${isThisWeek&&i===todayIdx?"today-col":""}">${d}</th>`).join("")}<th style="text-align:right">Week</th><th></th></tr></thead>
       <tbody>${S.habits.map(h=>{
         const w=(h.weeks&&h.weeks[wk])||[0,0,0,0,0,0,0], n=w.filter(Boolean).length, pct=Math.round(n/7*100);
-        return `<tr><td class="name"><input id="hn-${h.id}" data-act="hname" data-h="${h.id}" value="${esc(h.name)}" aria-label="Habit name"></td>
+        return `<tr><td class="name"><textarea class="auto-grow single-line" rows="1" wrap="soft" id="hn-${h.id}" data-act="hname" data-h="${h.id}" aria-label="Habit name">${esc(h.name)}</textarea></td>
           ${w.map((v,i)=>`<td><input type="checkbox" class="box" data-act="hday" data-h="${h.id}" data-i="${i}" ${v?"checked":""} aria-label="${esc(h.name)} on ${DAYS[i]}"></td>`).join("")}
           <td class="pct">${n}/7 · ${pct}%<div class="bar"><i style="width:${pct}%"></i></div></td>
           <td><button class="icon-btn danger" data-act="hdel" data-h="${h.id}" aria-label="Delete habit">✕</button></td></tr>`}).join("")}</tbody></table>
     </div>
-    <form class="add-row" id="habitForm"><span class="hash">+</span><input id="add-habit" placeholder="Add a habit, e.g. Read 10 pages" autocomplete="off" aria-label="Add a habit"></form>
+    <form class="add-row" id="habitForm"><span class="hash">+</span><textarea class="auto-grow single-line" rows="1" wrap="soft" id="add-habit" placeholder="Add a habit, e.g. Read 10 pages" autocomplete="off" aria-label="Add a habit"></textarea></form>
   </section>
 
   <section>
     <div class="sec-head"><h2>Goals for ${monthName}</h2><span class="meta">${S.goals.length?avg+"% average progress":""}</span></div>
     <div class="goals">${S.goals.map(g=>`<article class="goal">
-        <div class="top"><input class="gt" id="gt-${g.id}" data-act="gname" data-g="${g.id}" value="${esc(g.t)}" aria-label="Goal"><button class="icon-btn danger" data-act="gdel" data-g="${g.id}" aria-label="Delete goal">✕</button></div>
+        <div class="top"><textarea class="gt auto-grow single-line" rows="1" wrap="soft" id="gt-${g.id}" data-act="gname" data-g="${g.id}" aria-label="Goal">${esc(g.t)}</textarea><button class="icon-btn danger" data-act="gdel" data-g="${g.id}" aria-label="Delete goal">✕</button></div>
         <div class="row"><input type="range" min="0" max="100" step="5" id="gp-${g.id}" data-act="gp" data-g="${g.id}" value="${+g.p||0}" aria-label="Progress"><span class="p">${+g.p||0}%</span></div>
         <div class="state ${+g.p>=100?"done":""}">${+g.p>=100?"Achieved":+g.p>0?"In progress":"Not started"}</div>
       </article>`).join("")}
@@ -1123,8 +1138,8 @@ function render(focusId){
   </section>
   ${backdropHTML()}
   ${adminHTML()}`;
-  renderNow();renderQuick();
-  if(focusId){const el=document.getElementById(focusId);if(el&&el.focus){el.focus();if(el.setSelectionRange&&el.type==="text"){const n=el.value.length;el.setSelectionRange(n,n)}}}
+  renderNow();renderQuick();growEditors();
+  if(focusId){const el=document.getElementById(focusId);if(el&&el.focus){el.focus();if(el.setSelectionRange&&(el.type==="text"||el.tagName==="TEXTAREA")){const n=el.value.length;el.setSelectionRange(caret?Math.min(caret.start,n):n,caret?Math.min(caret.end,n):n,caret?caret.direction:"none")}}}
 }
 
 /* ---------- list helpers ---------- */
@@ -1136,6 +1151,16 @@ function commitBlank(inp,focusNext){
   save(); render(focusNext?`blank-${l.id}-0`:null); return true;
 }
 function toMarkdown(l){return `## ${l.name}\n`+l.items.map(i=>`- [${i.d?"x":" "}] ${i.t}`).join("\n")}
+
+// Soft wrapping is visual only; these fields still have their original single-line semantics.
+function enterEditor(t){
+  if(!S){t.blur();return}
+  const a=t.dataset.act;
+  if(a==="blank")commitBlank(t,true);
+  else if(a==="edit"){save();render(`blank-${t.dataset.l}-0`)}
+  else if(t.id==="add-habit")t.form.requestSubmit();
+  else t.blur();
+}
 
 /* ---------- events ---------- */
 app.addEventListener("click",async e=>{
@@ -1216,9 +1241,8 @@ app.addEventListener("input",e=>{
   else if(a==="gp"){const g=S.goals.find(g=>g.id===t.dataset.g);g.p=+t.value;t.nextElementSibling.textContent=g.p+"%"}
 });
 app.addEventListener("keydown",e=>{
-  const t=e.target,a=t.dataset&&t.dataset.act; if(!S) return;
-  if(e.key==="Enter"&&a==="blank"){e.preventDefault();if(commitBlank(t,true))return}
-  else if(e.key==="Enter"&&a==="edit"){e.preventDefault();save();render(`blank-${t.dataset.l}-0`)}
+  const t=e.target,a=t.dataset&&t.dataset.act; if(!S||e.isComposing||e.keyCode===229) return;
+  if(e.key==="Enter"&&t.matches(SINGLE_SEL)){e.preventDefault();enterEditor(t)}
   else if(e.key==="Backspace"&&a==="edit"&&t.value===""){
     e.preventDefault();const l=L(t.dataset.l),idx=l.items.findIndex(i=>i.id===t.dataset.i);
     l.items.splice(idx,1);save();const prev=l.items[idx-1];render(prev?`it-${l.id}-${prev.id}`:`blank-${l.id}-0`)}
@@ -1226,7 +1250,7 @@ app.addEventListener("keydown",e=>{
 app.addEventListener("submit",e=>{
   if(e.target.id!=="habitForm")return;
   e.preventDefault(); if(!S) return;
-  const inp=e.target.querySelector("input"),v=inp.value.trim(); if(!v) return;
+  const inp=e.target.querySelector("textarea"),v=inp.value.trim(); if(!v) return;
   S.habits.push({id:uid(),name:v,weeks:{}});save();render("add-habit");
 });
 $("#intention").addEventListener("input",e=>{if(!S)return;S.intention=e.target.value;save()});
@@ -1264,29 +1288,32 @@ $("#themeBtn").addEventListener("click",()=>{
 });
 try{const t=localStorage.getItem(LS+"-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
 
-/* Phones: long text in one-line boxes gets cut off, so show it wrapped and swap in the box on tap. */
-(function(){
-  if(window.__plannerView)return; // the view-only page has its own version
-  const SEL='#intention,#oneThing,input.bt,.ln input.t,.sheet-name';
-  const mq=matchMedia("(max-width:760px)");
-  const COPY=["fontFamily","fontSize","fontWeight","fontStyle","lineHeight","letterSpacing","textTransform","color","textDecorationLine","textDecorationColor","textDecorationThickness","paddingTop","paddingRight","paddingBottom","paddingLeft","textAlign","flexGrow","flexShrink","flexBasis","order"];
-  function sync(x){
-    let m=x.nextElementSibling;if(m&&!m.classList.contains("wrap-text"))m=null;
-    const on=mq.matches&&!!x.value&&document.activeElement!==x;
-    if(!on){if(m&&!m.hidden)m.hidden=true;if(x.classList.contains("wrap-off"))x.classList.remove("wrap-off");return}
-    if(!m){m=document.createElement("div");m.className="wrap-text";
-      m.addEventListener("click",()=>{x.classList.remove("wrap-off");m.hidden=true;x.focus();try{x.setSelectionRange(x.value.length,x.value.length)}catch(e){}});
-      x.after(m)}
-    const cs=getComputedStyle(x);COPY.forEach(k=>{if(m.style[k]!==cs[k])m.style[k]=cs[k]});
-    if(m.textContent!==x.value)m.textContent=x.value;
-    if(m.hidden)m.hidden=false;if(!x.classList.contains("wrap-off"))x.classList.add("wrap-off");
-  }
-  const all=()=>document.querySelectorAll(SEL).forEach(sync);
-  new MutationObserver(all).observe(document.body,{childList:true,subtree:true});
-  document.addEventListener("focusin",e=>{if(e.target.matches&&e.target.matches(SEL))sync(e.target)});
-  document.addEventListener("focusout",e=>{if(e.target.matches&&e.target.matches(SEL))setTimeout(()=>sync(e.target),0)});
-  mq.addEventListener("change",all);
-})();
+/* Fit real editors after input/render, width changes, and font loading, not clock mutations. */
+document.addEventListener("input",e=>{if(e.target.matches&&e.target.matches(GROW_SEL))growEditor(e.target)});
+document.addEventListener("keydown",e=>{
+  const t=e.target;
+  if(e.defaultPrevented||e.isComposing||e.keyCode===229||e.key!=="Enter"||!t.matches||!t.matches(SINGLE_SEL)||t.readOnly||t.disabled)return;
+  e.preventDefault();enterEditor(t); // includes the intention editor outside #app
+});
+document.addEventListener("beforeinput",e=>{
+  const t=e.target;
+  if(e.defaultPrevented||e.isComposing||!t.matches||!t.matches(SINGLE_SEL)||t.readOnly||t.disabled)return;
+  if(e.inputType==="insertLineBreak"||e.inputType==="insertParagraph"){e.preventDefault();enterEditor(t)}
+});
+document.addEventListener("paste",e=>{
+  const t=e.target;
+  if(e.defaultPrevented||!t.matches||!t.matches(SINGLE_SEL)||t.readOnly||t.disabled||!e.clipboardData)return;
+  const text=e.clipboardData.getData("text/plain");
+  if(!/[\r\n\u2028\u2029]/.test(text))return;
+  e.preventDefault();t.setRangeText(text.replace(/[\r\n\u2028\u2029]+/g," "),t.selectionStart,t.selectionEnd,"end");
+  t.dispatchEvent(new Event("input",{bubbles:true})); // use the existing state/save listeners
+});
+addEventListener("resize",queueEditorGrowth);addEventListener("load",queueEditorGrowth);
+if(document.fonts){document.fonts.ready.then(queueEditorGrowth);document.fonts.addEventListener("loadingdone",queueEditorGrowth)}
+if(typeof ResizeObserver!=="undefined"){
+  let editorWidth=-1;
+  new ResizeObserver(entries=>{const width=entries[0].contentRect.width;if(width!==editorWidth){editorWidth=width;queueEditorGrowth()}}).observe($(".wrap"));
+}
 
 boot();
 })();

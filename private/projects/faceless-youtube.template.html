@@ -38,23 +38,23 @@ h1{font:500 clamp(38px,6vw,64px)/1.02 var(--display);margin:6px 0 10px}
 .bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:10px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--red))}
 section{margin-top:44px}
-.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px}
-.sec-head h2{font:500 30px var(--display);margin:0}
-.sec-head .meta{margin-left:auto;font-size:12px;color:var(--faint)}
+.sec-head{display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px}
+.sec-head h2{font:500 30px var(--display);margin:0;min-width:0;overflow-wrap:anywhere}
+.sec-head .meta{margin-left:auto;font-size:12px;color:var(--faint);min-width:0;max-width:100%;overflow-wrap:anywhere}
 .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px}
 /* pipeline */
 .vids{display:flex;flex-direction:column;gap:10px}
 .vid{display:grid;grid-template-columns:34px minmax(0,1fr) 190px;gap:14px;padding:14px 16px;align-items:start}
 .vid .n{font:500 26px/1 var(--display);color:var(--gold)}
 .vid .t{font-weight:600;font-size:15.5px}
-.vid .t input{all:unset;width:100%;font-weight:600}
 .vid .h{color:var(--muted);font-size:13.5px;margin-top:2px}
-.vid .h input{all:unset;width:100%}
 .vid .pf{font-size:12px;color:var(--faint);margin-top:4px}
 .vid .more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
 .vid label{display:flex;flex-direction:column;gap:3px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .vid textarea,.vid input[type=date],.vid input[type=number],.vid input[type=url],.vid select{font:13px var(--body);color:var(--fg);background:var(--surface2);border:1px solid var(--line-soft);border-radius:7px;padding:6px 8px;width:100%;text-transform:none;letter-spacing:0}
-.vid textarea{resize:vertical;min-height:34px;grid-column:1/-1}
+.vid textarea{resize:none;overflow:hidden;min-height:34px;grid-column:1/-1;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+.vid .t textarea,.vid .h textarea{display:block;min-height:0;background:transparent;border:0;border-radius:0;padding:0;font:inherit;color:inherit}
+.script-url{display:block;font-size:13px;line-height:1.5;margin-top:4px;overflow-wrap:anywhere}
 .vid .side{display:flex;flex-direction:column;gap:8px;align-items:stretch}
 .st{font:600 12px var(--body);border-radius:999px;padding:7px 10px;border:1px solid var(--line);background:var(--surface2);color:var(--fg);cursor:pointer}
 .st[data-s="Published"]{background:color-mix(in srgb,var(--ok) 30%,transparent);border-color:var(--ok)}
@@ -67,9 +67,9 @@ section{margin-top:44px}
 .addv{all:unset;cursor:pointer;color:var(--gold);font-size:13px;padding:10px 4px}
 .x{all:unset;cursor:pointer;color:var(--faint);font-size:12px;align-self:flex-end}
 .x:hover{color:var(--red)}
-@media (max-width:760px){.vid{grid-template-columns:28px minmax(0,1fr)}.vid .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}.vid .more{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.vid{grid-template-columns:28px minmax(0,1fr)}.vid .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}.vid .more{grid-template-columns:repeat(2,minmax(0,1fr))}.vid .script-field{grid-column:1/-1}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;counter-reset:s}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:12px;counter-reset:s}
 .step{padding:16px;position:relative}
 .step::before{counter-increment:s;content:counter(s);font:500 30px/1 var(--display);color:var(--gold);display:block;margin-bottom:6px}
 .step b{display:block;margin-bottom:4px}
@@ -82,11 +82,11 @@ section{margin-top:44px}
 .tbl tr:last-child td{border-bottom:0}
 .scroll{overflow-x:auto}
 .up{color:var(--ok)}.down{color:var(--red)}
-.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:10px}
 .res a{display:block;padding:14px 16px;text-decoration:none;color:var(--fg)}
 .res a:hover{border-color:var(--gold)}
 .res a span{display:block;font-size:12.5px;color:var(--muted)}
-.notes{width:100%;min-height:160px;resize:vertical;font:14px/1.6 var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:14px 16px}
+.notes{width:100%;min-height:160px;resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:14px 16px}
 .tl{--c:#2fd36b;display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);vertical-align:middle;box-shadow:0 0 0 2px var(--bg),0 0 9px var(--c);animation:tlpulse 1.6s ease-in-out infinite}
 .tl.orange{--c:#ff9f1a}.tl.red{--c:#ff3b30;animation-duration:.8s}
 @keyframes tlpulse{50%{opacity:.3;box-shadow:0 0 0 2px var(--bg),0 0 1px var(--c)}}
@@ -104,6 +104,9 @@ section{margin-top:44px}
 .ms-src{font-size:12px;color:#ff9f1a}
 .ms-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold)}
 .ms-empty{color:var(--faint);padding:10px 14px;margin:0}
+.vid>div,.vid .more>*,.stat,.step,.res>a,.top>*{min-width:0}
+.stat,.vid .n,.vid .pf,.step,.res>a,.ms-t,.ms-foot,.ms-empty,.save,.eyebrow,.lede,h1{overflow-wrap:anywhere}
+.tl-pill .tl{flex-shrink:0}
 @media (max-width:600px){.ms-row{grid-template-columns:12px 18px minmax(0,1fr)}.ms-due{grid-column:3}}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 </style>
@@ -215,7 +218,29 @@ function save(){
 }
 const findV=id=>S.videos.find(v=>v.id===id);
 
+// Layout only: reset before measuring so deleting text or widening the page also shrinks fields.
+function fitText(t){
+  if(!t.matches("textarea[data-f]"))return;
+  t.style.height="auto";
+  const c=getComputedStyle(t);
+  t.style.height=(t.scrollHeight+(parseFloat(c.borderTopWidth)||0)+(parseFloat(c.borderBottomWidth)||0))+"px";
+}
+function fitTextareas(){document.querySelectorAll("#app textarea[data-f]").forEach(fitText)}
+let fitFrame=0;
+function queueTextFit(){cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(fitTextareas)}
+window.addEventListener("resize",queueTextFit);
+if(document.fonts){document.fonts.ready.then(queueTextFit);document.fonts.addEventListener("loadingdone",queueTextFit)}
+let composing=false,renderPending=false;
+document.addEventListener("compositionstart",e=>{if(e.target.dataset.f)composing=true});
+document.addEventListener("compositionend",()=>{
+  composing=false;
+  if(renderPending){renderPending=false;requestAnimationFrame(()=>{if(S)render()})}
+});
+
 function render(){
+  if(composing){renderPending=true;return}
+  const a=document.activeElement;
+  const editing=a&&$("#app").contains(a)&&a.dataset.f?{f:a.dataset.f,id:a.dataset.id,start:a.selectionStart,end:a.selectionEnd,direction:a.selectionDirection}:null;
   const vids=S.videos,pub=vids.filter(v=>v.status==="Published").length,active=vids.filter(v=>v.status!=="Not started"&&v.status!=="Published").length;
   const views=vids.reduce((a,v)=>a+(+v.views||0),0);
   const next=vids.find(v=>v.status!=="Published");
@@ -237,20 +262,21 @@ function render(){
       <div class="vid card ${v.status==="Published"?"done":""}">
         <div class="n">${esc(v.n)}</div>
         <div>
-          <div class="t"><input data-f="topic" data-id="${v.id}" value="${esc(v.topic)}" aria-label="Topic" placeholder="Topic"></div>
-          <div class="h"><input data-f="hook" data-id="${v.id}" value="${esc(v.hook)}" aria-label="Angle or hook" placeholder="Angle or hook"></div>
+          <div class="t"><textarea rows="1" wrap="soft" data-f="topic" data-id="${esc(v.id)}" aria-label="Topic" placeholder="Topic">\n${esc(v.topic)}</textarea></div>
+          <div class="h"><textarea rows="1" wrap="soft" data-f="hook" data-id="${esc(v.id)}" aria-label="Angle or hook" placeholder="Angle or hook">\n${esc(v.hook)}</textarea></div>
           ${v.proof?`<div class="pf">Proof it works: ${esc(v.proof)}</div>`:""}
           <div class="more">
-            <label>Publish date<input type="date" data-f="date" data-id="${v.id}" value="${esc(v.date)}"></label>
-            <label>Views<input type="number" min="0" data-f="views" data-id="${v.id}" value="${esc(v.views)}" placeholder="0"></label>
-            <label>Script link<input type="url" data-f="script" data-id="${v.id}" value="${esc(v.script)}" placeholder="https://…"></label>
-            <textarea data-f="notes" data-id="${v.id}" placeholder="Notes: sources, voice, editor, ideas…" aria-label="Notes">${esc(v.notes)}</textarea>
+            <label>Publish date<input type="date" data-f="date" data-id="${esc(v.id)}" value="${esc(v.date)}"></label>
+            <label>Views<input type="number" min="0" data-f="views" data-id="${esc(v.id)}" value="${esc(v.views)}" placeholder="0"></label>
+            <div class="script-field"><label>Script link<input type="url" data-f="script" data-id="${esc(v.id)}" value="${esc(v.script)}" placeholder="https://…"></label>
+              ${v.script?sh?`<a class="script-url" href="${esc(sh)}" target="_blank" rel="noopener">${esc(v.script)} ↗</a>`:`<span class="script-url">${esc(v.script)}</span>`:""}</div>
+            <textarea rows="1" wrap="soft" data-f="notes" data-id="${esc(v.id)}" placeholder="Notes: sources, voice, editor, ideas…" aria-label="Notes">\n${esc(v.notes)}</textarea>
           </div>
         </div>
         <div class="side">
-          <select class="st" data-f="status" data-id="${v.id}" data-s="${esc(v.status)}" aria-label="Status for video ${esc(v.n)}">${STATUSES.map(s=>`<option ${s===v.status?"selected":""}>${s}</option>`).join("")}</select>
-          <div class="links">${sh?`<a class="chip" href="${esc(sh)}" target="_blank" rel="noopener">Script ↗</a>`:""}<a class="chip" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.topic||"")}" target="_blank" rel="noopener">Research ↗</a></div>
-          <button class="x" data-act="del" data-id="${v.id}" aria-label="Remove video ${esc(v.n)}">Remove</button>
+          <select class="st" data-f="status" data-id="${esc(v.id)}" data-s="${esc(v.status)}" aria-label="Status for video ${esc(v.n)}">${STATUSES.map(s=>`<option ${s===v.status?"selected":""}>${s}</option>`).join("")}</select>
+          <div class="links"><a class="chip" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.topic||"")}" target="_blank" rel="noopener">Research ↗</a></div>
+          <button class="x" data-act="del" data-id="${esc(v.id)}" aria-label="Remove video ${esc(v.n)}">Remove</button>
         </div>
       </div>`}).join("")}
     </div>
@@ -276,12 +302,19 @@ function render(){
   </section>
 
   <section><div class="sec-head"><h2>Notes</h2><span class="meta">Ideas, channel name, voice, editor contacts</span></div>
-    <textarea class="notes" data-f="pnotes" placeholder="Anything about the channel…">${esc(S.notes)}</textarea>
+    <textarea class="notes" wrap="soft" data-f="pnotes" aria-label="Channel notes" placeholder="Anything about the channel…">\n${esc(S.notes)}</textarea>
   </section>`;
+  fitTextareas();
+  // Schedule fetches and native-control changes may redraw while an editor is focused.
+  if(editing){
+    const t=Array.from($("#app").querySelectorAll("[data-f]")).find(t=>t.dataset.f===editing.f&&t.dataset.id===editing.id);
+    if(t){t.focus({preventScroll:true});if(typeof editing.start==="number"&&t.setSelectionRange)try{t.setSelectionRange(editing.start,editing.end,editing.direction)}catch(e){}}
+  }
 }
 
 document.addEventListener("input",e=>{
   const t=e.target,f=t.dataset.f;if(!f||!S)return;
+  fitText(t);
   if(f==="pnotes"){S.notes=t.value;return save()}
   const v=findV(t.dataset.id);if(!v)return;
   v[f]=t.value;save();

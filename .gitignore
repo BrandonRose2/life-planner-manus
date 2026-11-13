@@ -1,0 +1,26 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+**/auth.json
+**/hubspot.json
+
+# Dependencies and generated output
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+private/public/
+private/seed/
+
+# Runtime data and private inspection artifacts
+/data/
+.test-data/
+.test-results/
+state.json
+*-baseline.html
+browser_html/
+screenshots/
+mobile-baseline.json

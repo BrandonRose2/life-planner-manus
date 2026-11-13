@@ -1,0 +1,11 @@
+.view-bar{position:relative;z-index:6;box-sizing:border-box;min-height:calc(31px + env(safe-area-inset-top,0px));text-align:center;font:600 13px/1.3 system-ui;letter-spacing:.04em;padding:calc(7px + env(safe-area-inset-top,0px)) 12px 7px;background:#2b2622;color:#f3ead8;overflow-wrap:anywhere}
+.quick{top:calc(41px + env(safe-area-inset-top,0px))!important}
+.ln{height:auto!important;min-height:36px}
+.head>.status{display:none!important}
+#saveState,#bdBtn,#themeBtn,#adminBtn,.save,.proj-edit,.cal-add,[data-calact^="feed"],.cal-feed,#backdrop,#admin,#habitForm,.icon-btn.danger,.block-acts,.sheet-foot .link-btn,.dropzone,[data-act="quick"],[data-act="bdoneNow"],[data-act="newList"],[data-act="newGoal"],[data-act="addBlock"],[data-act="copyY"],[data-act="add"],[data-act="del"],.swatch,.drop-overlay,[data-act="bdAdjust"]{display:none!important}
+input,textarea,select{cursor:default!important}
+.ro-hide{display:none!important}
+.ro-text{min-width:0;max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;cursor:text;user-select:text;-webkit-user-select:text}
+.ro-text[hidden]{display:none!important}
+.ro-empty-rule>input,.ro-empty-rule>textarea,.ro-empty-rule>.ro-text{visibility:hidden}
+input::placeholder,textarea::placeholder{color:transparent!important}

@@ -71,38 +71,18 @@ for (const f of fs.readdirSync(PD).filter(f => f.endsWith(".template.html"))) {
 // Project apps a viewer may open: every project (same rule as VIEW_PROJECTS in server.js).
 const VIEW_PROJECTS = fs.readdirSync(path.join(__dirname, "projects")).filter(f => f.endsWith(".template.html")).map(f => f.replace(".template.html", ""));
 // Shared by the read-only planner and project pages: blocks every edit, allows looking around.
-const VIEW_LOCK = `  /* Only looking around is allowed: month and week arrows, picking a day, and outside links. */
-  const OK='[data-act="ovClose"],[data-act="ytSnd"],[data-act="ytPrev"],[data-act="ytNext"],[data-tab],[data-calact="nav"],[data-calact="sel"],[data-calact="today"],[data-act="wk"],[data-act="md"],[data-act="msall"]';
-  document.addEventListener("click",function(e){
-    const a=e.target.closest("a[href]");
-    if(a){const h=a.getAttribute("href");if(/^https?:/i.test(h)||h==="/"||/^\\/projects\\/(${VIEW_PROJECTS.join("|")})\\/?$/.test(h))return;e.preventDefault();e.stopImmediatePropagation();return}
-    const c=e.target.closest("button,label,[data-act],[data-calact],[data-projact],input,select,textarea");
-    if(c&&!c.matches(OK)){e.preventDefault();e.stopImmediatePropagation()}
-  },true);
-  ["input","change","submit","keydown","paste","drop","dragover","dragenter"].forEach(function(t){
-    document.addEventListener(t,function(e){if(t==="keydown"&&!e.target.matches("input,textarea,select"))return;e.preventDefault();e.stopImmediatePropagation()},true);
-  });
-  /* Text boxes can't wrap, so long text gets cut off on phones. Show each filled one as wrapping text instead. */
-  const COPY=["fontFamily","fontSize","fontWeight","fontStyle","lineHeight","letterSpacing","textTransform","color","textDecorationLine","textDecorationColor","textDecorationThickness","paddingTop","paddingRight","paddingBottom","paddingLeft","textAlign"];
-  function mirror(x){
-    let m=x.nextElementSibling;if(!m||!m.classList.contains("ro-text")){m=document.createElement("div");m.className="ro-text";x.after(m)}
-    const v=x.value||"";if(m.textContent!==v)m.textContent=v;
-    if(v){const cs=getComputedStyle(x);COPY.forEach(function(k){if(m.style[k]!==cs[k])m.style[k]=cs[k]});const f=cs.flex;if(m.style.flex!==f)m.style.flex=f;if(m.style.flexBasis!==cs.flexBasis)m.style.flexBasis=cs.flexBasis;if(m.style.order!==cs.order)m.style.order=cs.order}
-    if(x.classList.contains("ro-hide")!==!!v)x.classList.toggle("ro-hide",!!v);
-    if(m.hidden!==!v)m.hidden=!v;
-  }
-  function lock(){document.querySelectorAll("input,textarea,select").forEach(function(x){
-    if(!x.readOnly)x.readOnly=true;if((x.type==="checkbox"||x.tagName==="SELECT"||x.type==="time"||x.type==="file")&&!x.disabled)x.disabled=true;if(x.tabIndex!==-1)x.tabIndex=-1;
-    if(x.tagName==="INPUT"&&(x.type==="text"||x.type==="search"||x.type==="url")&&x.id!=="calText")mirror(x);
-    if(x.tagName==="TEXTAREA"&&x.offsetParent){x.style.height="auto";const h=x.scrollHeight+2;if(h>x.clientHeight)x.style.height=h+"px";else x.style.height=""}})}
-  new MutationObserver(lock).observe(document.documentElement,{childList:true,subtree:true});
-  addEventListener("resize",lock);
-`;
+const VIEW_LOCK = "const VIEW_PROJECT_ROUTES=" + JSON.stringify(VIEW_PROJECTS.map(slug => "/projects/" + slug)) + ";\n" + fs.readFileSync(path.join(__dirname, "view-lock.js"), "utf8");
+const VIEW_CSS = fs.readFileSync(path.join(__dirname, "view-lock.css"), "utf8");
 // Read-only view for family: /view/<code> on the server. Same planner, nothing can be saved.
 // The server refuses every write from a viewer; this page also hides the edit controls.
 {
   let vb = body;
   const vrep = (a, b) => { if (!vb.includes(a)) throw new Error("view missing: " + a.slice(0, 60)); vb = vb.replace(a, () => b); };
+  vrep('function readLocal(){', 'function readLocal(){if(window.__plannerView)return null;');
+  vrep('function writeLocal(){', 'function writeLocal(){if(window.__plannerView)return;');
+  vrep('function save(){', 'function save(){if(window.__plannerView)return;');
+  vrep('const fallback=()=>{if(settled)return;settled=true;docRef=null;', 'const fallback=()=>{if(settled)return;settled=true;docRef=null;if(window.__plannerView){setStatus("Unable to load");app.innerHTML=\'<p role="alert">Couldn’t load the shared planner. <a href="">Retry</a></p>\';return;}');
+  vb = vb.replaceAll('Enter for a new line', 'View only').replaceAll('Tap a day to add appointments and reminders', 'Tap a day to view appointments and reminders').replaceAll('Nothing yet. Add your first one below.', 'Nothing scheduled for this day.');
   vrep('<footer>Saved to your private server and synced to every device you sign in on. · <a href="/logout" style="color:inherit">Sign out</a></footer>',
     "<footer>View only. This page shows Brandon’s planner as it is right now.</footer>");
   const vshim = `<script>
@@ -123,15 +103,7 @@ window.__plannerServer=true;window.__plannerView=true;
   ${VIEW_LOCK}
 })();
 </script>
-<style>
-.view-bar{position:relative;z-index:6;box-sizing:border-box;height:calc(31px + env(safe-area-inset-top,0px));text-align:center;font:600 13px/1 system-ui;letter-spacing:.04em;padding:calc(9px + env(safe-area-inset-top,0px)) 12px 9px;background:#2b2622;color:#f3ead8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.quick{top:calc(41px + env(safe-area-inset-top,0px))!important}
-.ln{height:auto!important;min-height:36px}
-#saveState,#bdBtn,#themeBtn,#adminBtn,.proj-edit,.cal-add,[data-calact^="feed"],.cal-feed,#backdrop,#admin,.icon-btn.danger,.block-acts,.sheet-foot .link-btn,.dropzone,[data-act="quick"],[data-act="bdoneNow"],[data-act="newList"],[data-act="newGoal"],[data-act="addBlock"],[data-act="copyY"],.swatch,.drop-overlay{display:none!important}
-input,textarea,select{cursor:default!important}
-.ro-hide{display:none!important}.ro-text{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere;cursor:default}.ro-text[hidden]{display:none!important}
-input::placeholder,textarea::placeholder{color:transparent!important}
-</style>`;
+<style>${VIEW_CSS}</style>`;
   const vhtml = html.replace(shim, () => vshim).replace("<body>\n", () => '<body>\n<div class="view-bar">Brandon’s Life Planner · view only</div>\n').replace(body, () => vb);
   if (vhtml === html) throw new Error("view build failed");
   fs.writeFileSync(path.join(__dirname, "public", "view.html"), vhtml);
@@ -141,9 +113,11 @@ input::placeholder,textarea::placeholder{color:transparent!important}
 // Read-only project pages for viewers: projects/<slug>.html -> public/projects/<slug>.view.html
 for (const slug of VIEW_PROJECTS) {
   let page = fs.readFileSync(path.join(OUT, slug + ".html"), "utf8");
-  const lockTag = `<script>(function(){\n${VIEW_LOCK}})();</script>
-<style>.save,[data-act="add"],[data-act="del"]{display:none!important}.ro-hide{display:none!important}.ro-text{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere;cursor:default}.ro-text[hidden]{display:none!important}input,textarea,select{cursor:default!important}input::placeholder,textarea::placeholder{color:transparent!important}
-.view-bar{text-align:center;font:600 13px/1 system-ui;letter-spacing:.04em;padding:9px 12px;background:#2b2622;color:#f3ead8}</style>`;
+  if (!/function save\(\)\s*\{/.test(page)) throw new Error("no save guard point in " + slug);
+  page = page.replace(/function save\(\)\s*\{/, match => match + 'if(window.__plannerView)return;');
+  page = page.replaceAll('Changes save automatically', 'View only');
+  const lockTag = `<script>window.__plannerView=true;(function(){\n${VIEW_LOCK}})();</script>
+<style>${VIEW_CSS}</style>`;
   if (!page.includes("<body>\n")) throw new Error("no body in " + slug);
   page = page.replace("</head>", () => lockTag + "\n</head>")
     .replace("<body>\n", () => '<body>\n<div class="view-bar">Brandon’s project · view only</div>\n')

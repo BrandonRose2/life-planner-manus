@@ -1,0 +1,13 @@
+{
+  "name": "life-planner-manus",
+  "private": true,
+  "version": "1.0.1",
+  "description": "Mobile readability fixes for the existing Life Planner",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node private/build.js",
+    "start": "node private/server.js",
+    "test": "npm run build && python3 tests/regression.py",
+    "check": "node --check private/build.js && node --check private/server.js && node --check private/view-lock.js"
+  }
+}
