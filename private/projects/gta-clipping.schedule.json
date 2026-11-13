@@ -1,0 +1,14 @@
+{
+  "project": "GTA 6 Clipping",
+  "rules": "GTA 6 launches Thu 2026-11-19. Learn the clipping workflow before launch, then post daily through launch week. All deadlines are ticked off by hand in the planner.",
+  "milestones": [
+    {"id": "gta-accounts", "title": "Accounts + Higgsfield set up", "due": "2026-11-13"},
+    {"id": "gta-refs", "title": "3 reference videos + prompt saved", "due": "2026-11-14"},
+    {"id": "gta-practice", "title": "Practice batch: 5 GTA V clips made", "due": "2026-11-15"},
+    {"id": "gta-posted", "title": "Practice clips posted on all platforms", "due": "2026-11-17"},
+    {"id": "gta-queue", "title": "Launch-day hook queue ready", "due": "2026-11-18"},
+    {"id": "gta-launch", "title": "GTA 6 launch: first clips posted", "due": "2026-11-19"},
+    {"id": "gta-review", "title": "Review launch-weekend stats", "due": "2026-11-22"},
+    {"id": "gta-week", "title": "Launch week done: 20+ clips posted", "due": "2026-11-25"}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+ "project": "Thornless AI",
+ "rules": "30-day launch plan, Nov 12 to Dec 18, 2026. Deadlines are ticked off by hand on the Deadlines tab in the Thornless AI app.",
+ "milestones": [
+  {
+   "id": "tl-setup",
+   "title": "Name locked, domain, email, HubSpot, leave-behind done",
+   "due": "2026-11-13"
+  },
+  {
+   "id": "tl-week1",
+   "title": "2 demo bots built; 15 walk-ins; 50 emails; at least 1 audit booked",
+   "due": "2026-11-20"
+  },
+  {
+   "id": "tl-proposals",
+   "title": "4 audits done; first 2 proposals sent",
+   "due": "2026-12-04"
+  },
+  {
+   "id": "tl-clients",
+   "title": "1–2 founding clients signed (40% off for testimonial + case study)",
+   "due": "2026-12-11"
+  },
+  {
+   "id": "tl-review",
+   "title": "30-day review: what worked, set January targets",
+   "due": "2026-12-18"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{"phases":["Before launch (now → Nov 18)","Launch week (Nov 19 → 25)","After launch"],
+"steps":[
+{"id":"s1","phase":"Before launch (now → Nov 18)","t":"Set up accounts: YouTube channel, TikTok, Facebook page, Instagram","d":"One gaming name/handle across all four. Turn on 2FA."},
+{"id":"s2","phase":"Before launch (now → Nov 18)","t":"Sign up for Higgsfield and open Content Factory","d":"higgsfield.ai/content-factory → Generate viral shorts."},
+{"id":"s3","phase":"Before launch (now → Nov 18)","t":"Find 3 viral GTA clips to use as reference videos","d":"Search YouTube for “GTA gameplay”, sort by views. Save the ones whose visual style you like."},
+{"id":"s4","phase":"Before launch (now → Nov 18)","t":"Save your prompt and template (Recreate template)","d":"Paste the prompt into the How to clip tab so it’s one tap away."},
+{"id":"s5","phase":"Before launch (now → Nov 18)","t":"Practice batch: 5 clips from GTA V gameplay","d":"Set minutes + episode count, generate, check hooks and captions."},
+{"id":"s6","phase":"Before launch (now → Nov 18)","t":"Post the practice batch on all 4 platforms","d":"Learn the upload flow now, not on launch day."},
+{"id":"s7","phase":"Before launch (now → Nov 18)","t":"Launch-day queue: 10 hook ideas ready","d":"Map reveal, first heist, cars, Lucia/Jason, glitches, “things you missed”."},
+{"id":"s8","phase":"Launch week (Nov 19 → 25)","t":"Launch day: post first GTA 6 clips within hours","d":"Speed beats polish on day one."},
+{"id":"s9","phase":"Launch week (Nov 19 → 25)","t":"Post 3+ clips a day across every platform","d":"Log each one in the Clip log."},
+{"id":"s10","phase":"Launch week (Nov 19 → 25)","t":"Check which hooks get views; make more of those"},
+{"id":"s11","phase":"After launch","t":"Apply for monetization as each platform qualifies","d":"YouTube Partner Program, TikTok Creator Rewards, Facebook content monetization."},
+{"id":"s12","phase":"After launch","t":"Decide: keep going daily, or fold into the Faceless YouTube project"}
+],
+"how":{
+"steps":["Go to YouTube and search <b>GTA gameplay</b>. Note the views these videos get.","Open <b>Higgsfield.ai/content-factory</b> and select <b>Generate viral shorts</b>.","Add a <b>reference video</b> for its visual style, then hit <b>Recreate template</b>.","Paste in your prompt (the creator’s is in her pinned comment).","Set the <b>minutes</b> and the <b>episode number</b> (how many clips to make).","In a few minutes you get videos you can post to <b>YouTube Shorts, TikTok and Facebook Reels</b> and get monetized."],
+"links":[["Higgsfield Content Factory","https://higgsfield.ai/content-factory"],["YouTube: GTA gameplay","https://www.youtube.com/results?search_query=gta+gameplay"],["YouTube Studio","https://studio.youtube.com"],["TikTok upload","https://www.tiktok.com/upload"],["Meta Business Suite","https://business.facebook.com"]],
+"pay":["Short-form pays per view, not per clip. Payouts vary by platform, country and niche, and change often.","YouTube Shorts: ad-revenue share after you join the Partner Program.","TikTok: Creator Rewards pays only on videos over 1 minute.","Facebook Reels: content monetization program, invite-based."],
+"warn":"<b>Copyright:</b> clipping someone else’s YouTube gameplay can get claimed or struck. Your own captured gameplay is safest. Rockstar generally allows gameplay videos, but reuploaded footage from other creators is not yours."}
+}

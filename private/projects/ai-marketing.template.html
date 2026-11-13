@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Thornless AI · Ai Marketing Plan</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 35c0 9-1 17 0 25' stroke='%235f8a5a' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 50c5-5 11-5 15-9-3 8-10 11-15 10z' fill='%236f9a68'/%3E%3Cpath d='M32 46c-4-4-9-4-12-7 2 6 7 8 12 8z' fill='%235f8a5a'/%3E%3Cpath d='M17 21c0-8 6-13 11-12 2-3 6-3 8 0 5-1 11 4 11 12 0 9-7 15-15 15S17 30 17 21z' fill='%23c8344a'/%3E%3Cpath d='M22 18c2-6 11-8 16-3 3 4 1 10-4 11-4 1-7-2-6-5 1-3 5-3 6-1' stroke='%237d1c2c' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M19 25c3 6 9 8 15 7' stroke='%239e2638' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#0f1210;--surface:#161b18;--surface2:#1c2320;--fg:#ece6da;--muted:#a69f92;--faint:#6f6a61;
+  --line:rgba(236,230,218,.12);--line-soft:rgba(236,230,218,.08);
+  --gold:#c9a96a;--gold-soft:rgba(201,169,106,.14);--red:#ff6a5f;--ok:#8fae8b;--blue:#8fb3d9;
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root{--bg:#f6f2ea;--surface:#fffdf8;--surface2:#f1ece2;--fg:#231f1a;--muted:#6d6558;--faint:#9a9285;--line:rgba(35,31,26,.14);--line-soft:rgba(35,31,26,.08);--gold:#8f6f32;--gold-soft:rgba(143,111,50,.12);--red:#c23b30;--ok:#4f7a4b;--blue:#3d6a99;color-scheme:light}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.wrap{max-width:1240px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 72px max(16px,env(safe-area-inset-left))}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.back{font-size:13px;text-decoration:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.back:hover{color:var(--fg);border-color:var(--gold)}
+.save{margin-left:auto;font-size:12px;color:var(--faint)}
+.eyebrow{font:600 11px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font:500 clamp(38px,6vw,62px)/1.02 var(--display);margin:6px 0 10px}
+h2{font:500 30px/1.1 var(--display);margin:0 0 12px}
+h3{font:600 13px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:22px 0 8px}
+.lede{color:var(--muted);max-width:70ch;margin:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:24px 0 6px;border-bottom:1px solid var(--line);padding-bottom:10px;position:sticky;top:0;background:var(--bg);z-index:5;padding-top:8px}
+.tabs button{font:500 13px var(--body);background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 15px;cursor:pointer}
+.tabs button.on{background:var(--gold);border-color:var(--gold);color:#0f1210}
+.tabs button:hover:not(.on){color:var(--fg);border-color:var(--gold)}
+section{margin-top:26px}
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px}
+.stat b{display:block;font:500 36px/1 var(--display)}
+.stat span{font-size:12px;color:var(--muted)}
+.callout{background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:8px;padding:12px 16px;margin:10px 0}
+.warn{border-left-color:var(--red);background:rgba(255,106,95,.09)}
+ul,ol{margin:6px 0 10px;padding-left:22px}li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface)}
+td{padding:8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;overflow:auto;max-height:70vh}
+.pipe{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pill{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--muted);background:var(--surface);cursor:pointer}
+.pill b{color:var(--fg);margin-left:4px}
+.pill.on{border-color:var(--gold);color:var(--fg)}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{width:100%;min-height:34px;resize:vertical}
+.btn{font:500 13px var(--body);background:var(--surface2);border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:8px 14px;cursor:pointer}
+.btn:hover{border-color:var(--gold)}
+.btn.pri{background:var(--gold);color:#0f1210;border-color:var(--gold)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}.faint{color:var(--faint)}.small{font-size:12px}
+.lead-name{font-weight:600}
+.lead-sub{font-size:12px;color:var(--muted)}
+td .ctl{width:100%;min-width:120px}
+.due{color:var(--red);font-weight:600}
+.script{background:var(--surface2);border:1px solid var(--line-soft);border-radius:10px;padding:12px 14px;margin:8px 0 14px;white-space:pre-wrap;font-size:14px;position:relative}
+.script .copy{position:absolute;top:8px;right:8px;font-size:11px;padding:4px 9px}
+.counter{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.counter .n{font:500 26px/1 var(--display)}
+.counter button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--surface2);color:var(--fg);cursor:pointer;font-size:16px}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--gold)}
+.brand{display:flex;align-items:center;gap:16px}.brand .rose{width:clamp(56px,8vw,84px);height:auto;flex:none}.brand h1{margin-bottom:6px}
+.wk{margin-top:18px}.wk h3{margin:0 0 8px}.day{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line-soft)}.day.today{background:var(--gold-soft);border-radius:8px;padding:10px}.day .dl{font-weight:600;font-size:13px}.ev{display:flex;gap:10px;font-size:13.5px;padding:2px 0}.ev .tm{width:64px;flex:none;color:var(--muted);font-family:var(--mono);font-size:12px}.ev.dl-row{color:var(--red);font-weight:600}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line-soft)}.ck input{margin-top:4px;width:18px;height:18px;accent-color:var(--gold)}.ck.done .tx{text-decoration:line-through;color:var(--faint)}.ck .tx small{display:block;color:var(--muted);font-size:12.5px}
+.tl{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}.tl.red{background:var(--red)}.tl.orange{background:#e8a33d}.tl.green{background:var(--ok)}
+.hs-ok{color:var(--ok)}.hs-bad{color:var(--red)}
+@media(max-width:760px){.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="back" href="/">← Planner</a><span class="save" id="save">Loading…</span></div>
+  <div class="brand"><svg class="rose" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 35c0 9-1 17 0 25" stroke="#5f8a5a" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M32 50c5-5 11-5 15-9-3 8-10 11-15 10z" fill="#6f9a68"/><path d="M32 46c-4-4-9-4-12-7 2 6 7 8 12 8z" fill="#5f8a5a"/><path d="M17 21c0-8 6-13 11-12 2-3 6-3 8 0 5-1 11 4 11 12 0 9-7 15-15 15S17 30 17 21z" fill="#c8344a"/><path d="M22 18c2-6 11-8 16-3 3 4 1 10-4 11-4 1-7-2-6-5 1-3 5-3 6-1" stroke="#7d1c2c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M19 25c3 6 9 8 15 7" stroke="#9e2638" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><div><div class="eyebrow">Thornless AI · Sherman Oaks</div>
+  <h1>Ai Marketing Plan</h1></div></div>
+  <p class="lede"><b>Thornless AI</b> takes the thorns out of running a small business. Selling AI automation to small businesses near home. The plan, the scripts, the outreach list and the HubSpot hookup, all in one place.</p>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="main"></main>
+</div>
+<script>
+const SEED=/*SEED*/null;
+const SLUG="ai-marketing";
+const STAGES=["New","Contacted","Audit Booked","Audit Done","Proposal Sent","Won","Lost","Not a fit"];
+const TABS=[["today","Today"],["schedule","Schedule"],["deadlines","Deadlines"],["leads","Outreach List"],["plan","Plan & Offer"],["scripts","Scripts"],["process","Call & Follow-up"],["hubspot","HubSpot"]];
+const WEEKLY=[["walkins","Walk-ins",15],["emails","Emails",50],["calls","Calls",20],["linkedin","LinkedIn notes",15],["events","Networking events",1]];
+let S=null,ver=0,timer=null,tab=(()=>{try{return localStorage.getItem("aimp-tab")||"today"}catch(e){return "today"}})();
+let filt={stage:"",q:"",ind:"",due:false};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const fmtD=s=>new Date(s+"T12:00").toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"});
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const today=()=>ymd(new Date());
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return ymd(d)};
+const weekKey=()=>{const d=new Date();d.setDate(d.getDate()-((d.getDay()+6)%7));return ymd(d)};
+const safeHref=u=>/^https?:\/\//i.test(u||"");
+const tel=p=>String(p||"").replace(/[^\d+]/g,"");
+const lab=()=>$("#save");
+const CLOSED=["Won","Lost","Not a fit"];
+
+async function api(method,body,path){
+  const r=await fetch("/api/project/"+SLUG+(path||""),{method,credentials:"same-origin",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined});
+  if(r.status===401){location.href="/login";throw new Error("signed out")}
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(d.error||("HTTP "+r.status));
+  return d;
+}
+function fresh(){return {v:1,week:weekKey(),counts:{},leads:(SEED&&SEED.leads||[]).map(l=>Object.assign({id:uid(),stage:"New",next:"",notes:"",hs:""},l)),hs:{portal:""}}}
+function save(){lab().textContent="Saving…";clearTimeout(timer);timer=setTimeout(async()=>{try{const d=await api("PUT",S);ver=d.version;lab().textContent="Saved"}catch(e){lab().textContent="Couldn’t save. Check your connection."}},400)}
+function rollWeek(){if(S.week!==weekKey()){S.week=weekKey();S.counts={};save()}}
+
+/* ---------- tabs ---------- */
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,v])=>`<button data-tab="${k}" class="${k===tab?"on":""}">${v}</button>`).join("")}
+function render(){renderTabs();rollWeek();const f={schedule:vSched,deadlines:vDead,today:vToday,leads:vLeads,plan:vPlan,scripts:vScripts,process:vProcess,hubspot:vHub}[tab]||vToday;$("#main").innerHTML=f();if(tab==="hubspot")hubStatus();if(tab==="schedule"){const n=document.getElementById("schedToday");if(n)n.scrollIntoView({block:"center"})}}
+
+/* ---------- Today ---------- */
+function stageCounts(){const c={};STAGES.forEach(s=>c[s]=0);S.leads.forEach(l=>c[l.stage]=(c[l.stage]||0)+1);return c}
+function vToday(){
+  const c=stageCounts(),t=today();
+  const due=S.leads.filter(l=>l.next&&l.next<=t&&!CLOSED.includes(l.stage)).sort((a,b)=>a.next.localeCompare(b.next));
+  return `<section><div class="grid g4">
+    <div class="card stat"><b>${S.leads.length}</b><span>Businesses on the list</span></div>
+    <div class="card stat"><b>${S.leads.length-c["New"]}</b><span>Contacted so far</span></div>
+    <div class="card stat"><b>${c["Audit Booked"]+c["Audit Done"]}</b><span>Audits booked or done</span></div>
+    <div class="card stat"><b>${c["Won"]}</b><span>Clients won</span></div></div>
+    <div class="pipe">${STAGES.map(s=>`<span class="pill" data-gostage="${esc(s)}">${esc(s)}<b>${c[s]||0}</b></span>`).join("")}</div></section>
+  <section><h2>This week’s outreach</h2><p class="muted small">Resets every Monday. Tap + after each one.</p>
+    <div class="grid g4">${WEEKLY.map(([k,n,goal])=>{const v=S.counts[k]||0;return `<div class="card"><div class="counter"><div><div class="small muted">${n}</div><div class="n">${v} <span class="faint small">/ ${goal}</span></div></div><div class="row"><button data-cnt="${k}" data-d="-1" aria-label="minus">−</button><button data-cnt="${k}" data-d="1" aria-label="plus">+</button></div></div><div class="bar"><i style="width:${Math.min(100,v/goal*100)}%"></i></div></div>`}).join("")}</div></section>
+  <section><h2>Follow-ups due</h2>${due.length?`<div class="tbl"><table><thead><tr><th>Due</th><th>Business</th><th>Stage</th><th>Phone</th><th>Notes</th></tr></thead><tbody>${due.map(l=>`<tr><td class="due">${esc(l.next)}</td><td><div class="lead-name">${esc(l.name)}</div><div class="lead-sub">${esc(l.industry)}</div></td><td>${esc(l.stage)}</td><td>${l.phone?`<a href="tel:${esc(tel(l.phone))}">${esc(l.phone)}</a>`:""}</td><td class="small">${esc(l.notes)}</td></tr>`).join("")}</tbody></table></div>`:`<p class="muted">Nothing due. Set a “Next” date on a lead in the Outreach List and it shows up here on that day.</p>`}</section>
+  <section><h2>First 30 days</h2><div class="grid g4">
+    ${[["Week 1","Lead list (done: 125), one-pager, landing page with booking link, 2 demo bots (dental + property mgmt), join the chamber or BNI."],["Week 2","30 walk-ins, start emails to 75, LinkedIn to 30."],["Week 3","Next 75 emails, call non-responders, first networking event, run audits."],["Week 4","Send proposals, close 1–2 founding clients, schedule the first workshop."]].map(([a,b])=>`<div class="card"><div class="eyebrow">${a}</div><p class="small" style="margin:6px 0 0">${b}</p></div>`).join("")}</div>
+    <div class="callout small"><b>Benchmarks:</b> about 5% of cold contacts book an audit; 30–40% of audits close. 150 contacts ≈ 7–8 audits ≈ 2–3 clients.</div></section>`;
+}
+
+
+/* ---------- Schedule ---------- */
+const nice12=t=>{if(!t)return "All day";let[h,m]=t.split(":").map(Number);const ap=h>=12?"pm":"am";h=h%12||12;return h+(m?":"+String(m).padStart(2,"0"):"")+ap};
+let MS=[];
+function light(m){const t=ymd(new Date()),tm=ymd(new Date(Date.now()+864e5));if(m.done)return "";return m.due<t?"red":m.due<=tm?"orange":"green"}
+function vDead(){return `<section><h2>Deadlines</h2><p class="muted small">These show on your planner calendar and Apple Calendar. Tick them off here.</p>
+  ${MS.length?MS.slice().sort((a,b)=>a.due<b.due?-1:1).map(m=>`<label class="ck ${m.done?"done":""}"><input type="checkbox" data-ms="${esc(m.id)}" ${m.done?"checked":""}><span class="tx">${light(m)?`<span class="tl ${light(m)}"></span>`:""}<b>${fmtD(m.due)}</b> · ${esc(m.t)}</span></label>`).join(""):`<p class="faint">Loading deadlines…</p>`}</section>`}
+async function loadMS(){try{const r=await fetch("/api/project/"+SLUG+"/milestones",{credentials:"same-origin"});if(!r.ok)return;const d=await r.json();S.msDone=S.msDone||{};MS=(d.milestones||[]).map(m=>({...m,done:!!S.msDone[m.id]}));if(tab==="deadlines")render()}catch(e){}}
+function vSched(){const sc=(SEED&&SEED.schedule)||[],t=today(),by={};sc.forEach(e=>(by[e.date]=by[e.date]||[]).push(e));
+  const days=Object.keys(by).sort(),weeks=[];days.forEach(d=>{const dt=new Date(d+"T12:00"),m=new Date(dt);m.setDate(dt.getDate()-((dt.getDay()+6)%7));const k=ymd(m);let w=weeks.find(x=>x.k===k);if(!w){w={k,days:[]};weeks.push(w)}w.days.push(d)});
+  return `<section><h2>Strict schedule · Nov 12 – Dec 18</h2>
+  <div class="callout small"><b>Rules.</b> Start 8:30 sharp, weekdays. Every block happens. A missed block moves to Friday’s 1pm catch-up, never dropped. Walk-ins only Tue–Thu, 10–11:30 and 2–3:30. Log every touch in the Outreach List the same day. Friday scorecard under 80% = Saturday 10am–12pm make-up. Everything here is also in your planner calendar, where you can tick each block done.</div>
+  ${weeks.map((w,i)=>`<div class="wk card"><h3>${i===0?"Setup sprint":"Week "+i} · from ${new Date(w.k+"T12:00").toLocaleDateString("en-US",{month:"short",day:"numeric"})}</h3>${w.days.map(d=>`<div class="day ${d===t?"today":""}" ${d===t?'id="schedToday"':""}><div class="dl">${new Date(d+"T12:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})}${d===t?"<br><span class='small'>Today</span>":""}</div><div>${by[d].map(e=>`<div class="ev ${/DEADLINE/.test(e.t)?"dl-row":""}"><span class="tm">${nice12(e.time)}</span><span>${esc(e.t.replace(/^Thornless AI (DEADLINE )?· /,(m,x)=>x?"Deadline · ":""))}</span></div>`).join("")}</div></div>`).join("")}</div>`).join("")}</section>`}
+
+/* ---------- Leads ---------- */
+function shown(){const q=filt.q.toLowerCase(),t=today();return S.leads.filter(l=>(!filt.stage||l.stage===filt.stage)&&(!filt.ind||l.industry===filt.ind)&&(!filt.due||(l.next&&l.next<=t))&&(!q||(l.name+" "+l.category+" "+l.address+" "+l.notes+" "+l.email).toLowerCase().includes(q)))}
+function leadRows(){const t=today();return shown().map(l=>`<tr data-id="${l.id}">
+    <td style="min-width:220px"><div class="lead-name">${esc(l.name)}</div><div class="lead-sub">${esc(l.category||l.industry)}${l.mi?` · ${l.mi} mi`:""}${l.rating?` · ★${esc(l.rating)} (${esc(l.reviews)})`:""}</div><div class="lead-sub">${esc([l.address,l.city].filter(Boolean).join(", "))}</div></td>
+    <td style="min-width:190px" class="small">${l.phone?`<div><a href="tel:${esc(tel(l.phone))}">${esc(l.phone)}</a></div>`:""}${l.email?`<div>${l.email.split(/;\s*/).map(m=>`<a href="mailto:${esc(m)}">${esc(m)}</a>`).join("<br>")}</div>`:`<div class="faint">no email: call or walk in</div>`}${safeHref(l.website)?`<div><a href="${esc(l.website)}" target="_blank" rel="noopener">website ↗</a></div>`:""}</td>
+    <td><select class="ctl" data-f="stage">${STAGES.map(s=>`<option ${l.stage===s?"selected":""}>${s}</option>`).join("")}</select></td>
+    <td><input type="date" class="ctl ${l.next&&l.next<=t?"due":""}" data-f="next" value="${esc(l.next)}"></td>
+    <td style="min-width:200px"><textarea data-f="notes" placeholder="Owner name, pain, what they said…">${esc(l.notes)}</textarea></td>
+    <td class="hide-sm small">${l.hs&&S.hs.portal?`<a href="https://app.hubspot.com/contacts/${esc(S.hs.portal)}/company/${esc(l.hs)}" target="_blank" rel="noopener">HubSpot ↗</a>`:l.hs?`<span class="hs-ok">in HubSpot</span>`:""}<div><button class="btn small" data-del="${l.id}" style="padding:3px 8px;margin-top:6px" title="Remove from list">✕</button></div></td>
+  </tr>`).join("")}
+function vLeads(){
+  const inds=[...new Set(S.leads.map(l=>l.industry).filter(Boolean))].sort(),c=stageCounts();
+  return `<section>
+  <div class="row" style="justify-content:space-between"><h2 style="margin:0">Outreach list</h2>
+    <div class="row"><label class="btn" for="csvIn">Upload CSV</label><input id="csvIn" type="file" accept=".csv,text/csv" hidden><button class="btn" data-act="export">Download CSV</button><button class="btn" data-act="add">+ Add business</button></div></div>
+  <div class="pipe"><span class="pill ${!filt.stage?"on":""}" data-fstage="">All<b>${S.leads.length}</b></span>${STAGES.map(s=>`<span class="pill ${filt.stage===s?"on":""}" data-fstage="${esc(s)}">${esc(s)}<b>${c[s]||0}</b></span>`).join("")}</div>
+  <div class="row" style="margin:12px 0"><input id="fq" placeholder="Search name, notes, email…" value="${esc(filt.q)}" style="flex:1;min-width:200px"><select id="find"><option value="">All industries</option>${inds.map(i=>`<option ${filt.ind===i?"selected":""}>${esc(i)}</option>`).join("")}</select><label class="small row"><input type="checkbox" id="fdue" ${filt.due?"checked":""}> Due now</label><span class="small muted" id="nShown">${shown().length} shown</span></div>
+  <div class="tbl"><table><thead><tr><th>Business</th><th>Contact</th><th>Stage</th><th>Next</th><th>Notes</th><th class="hide-sm"></th></tr></thead><tbody id="leadBody">${leadRows()}</tbody></table></div>
+  <p class="small faint">Setting a stage fills an empty “Next” date: Contacted → 3 days, Audit Done → 2 days, Proposal Sent → 2 days. Uploading a CSV adds new businesses and skips ones already on the list (same phone or name).</p></section>`;
+}
+const AUTO_NEXT={"Contacted":3,"Audit Done":2,"Proposal Sent":2};
+
+/* ---------- CSV in / out ---------- */
+function parseCsv(txt){const rows=[];let row=[],f="",q=false;for(let i=0;i<txt.length;i++){const ch=txt[i];if(q){if(ch==='"'){if(txt[i+1]==='"'){f+='"';i++}else q=false}else f+=ch}else if(ch==='"')q=true;else if(ch===","){row.push(f);f=""}else if(ch==="\n"||ch==="\r"){if(ch==="\r"&&txt[i+1]==="\n")i++;row.push(f);f="";if(row.some(x=>x.trim()))rows.push(row);row=[]}else f+=ch}row.push(f);if(row.some(x=>x.trim()))rows.push(row);return rows}
+const COLS={name:["company name","business name","name","company"],industry:["industry","vertical"],category:["category","type"],address:["street address","address","street"],city:["city"],state:["state/region","state"],zip:["postal code","zip","zip code"],phone:["phone number","phone","contact number","telephone"],website:["website url","website","url","domain"],email:["email","company email","e-mail"],mi:["distance (mi)","distance"],rating:["google rating","rating"],reviews:["google reviews","reviews"],stage:["lead status","stage","status"],next:["next action","next"],notes:["notes","note"]};
+function readCsv(file){const r=new FileReader();r.onload=()=>{const rows=parseCsv(String(r.result).replace(/^﻿/,""));if(rows.length<2){alert("That file has no rows.");return}
+  const head=rows[0].map(h=>h.trim().toLowerCase()),idx={};for(const[k,names]of Object.entries(COLS)){const i=head.findIndex(h=>names.includes(h));if(i>=0)idx[k]=i}
+  if(idx.name==null){alert("Couldn’t find a business name column. Name a column “Company name” or “Name”.");return}
+  const norm=p=>String(p||"").replace(/\D/g,"").slice(-10),have=new Set(S.leads.map(l=>norm(l.phone)).filter(Boolean)),haveN=new Set(S.leads.map(l=>l.name.toLowerCase().trim()));
+  let added=0,skipped=0;for(const r of rows.slice(1)){const g=k=>idx[k]!=null?(r[idx[k]]||"").trim():"";const name=g("name");if(!name)continue;
+    if((norm(g("phone"))&&have.has(norm(g("phone"))))||haveN.has(name.toLowerCase())){skipped++;continue}
+    const st=STAGES.find(s=>s.toLowerCase()===g("stage").toLowerCase())||"New";
+    S.leads.push({id:uid(),name,industry:g("industry"),category:g("category"),address:g("address"),city:g("city"),state:g("state")||"CA",zip:g("zip"),phone:g("phone"),website:g("website"),email:g("email"),mi:parseFloat(g("mi"))||0,rating:g("rating"),reviews:g("reviews"),stage:st,next:/^\d{4}-\d\d-\d\d$/.test(g("next"))?g("next"):"",notes:g("notes"),hs:""});
+    if(norm(g("phone")))have.add(norm(g("phone")));haveN.add(name.toLowerCase());added++}
+  save();render();alert(`Added ${added} business${added===1?"":"es"}. Skipped ${skipped} already on the list.`)};r.readAsText(file)}
+function exportCsv(){const H=["Company name","Industry","Category","Street Address","City","State/Region","Postal Code","Phone Number","Website URL","Email","Distance (mi)","Google Rating","Google Reviews","Lead Status","Next Action","Notes"];
+  const q=v=>{v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+  const lines=[H.join(",")].concat(S.leads.map(l=>[l.name,l.industry,l.category,l.address,l.city,l.state,l.zip,l.phone,l.website,l.email,l.mi,l.rating,l.reviews,l.stage,l.next,l.notes].map(q).join(",")));
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\n")],{type:"text/csv"}));a.download="ai-marketing-leads-"+today()+".csv";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+
+/* ---------- Plan ---------- */
+function vPlan(){return `<section><h2>Positioning</h2>
+<div class="callout"><b>One-line pitch:</b> “At Thornless AI, I set up AI systems that take repetitive work off your staff, like answering calls, booking, follow-ups and paperwork. Your team gets 10+ hours a week back.”</div>
+<p>Lead with <b>hours saved and leads not lost</b>. Don’t lead with “AI.” Owners buy outcomes.</p>
+<p><b>Entry offer: free “15-Hour Time Audit.”</b> A 30-minute visit to map their repetitive tasks, then a one-page report with the top 3 automations and hours saved per week. Costs them nothing; turns into a paid pilot.</p></section>
+<section><h2>Who to target</h2><div class="tbl" style="max-height:none"><table><thead><tr><th>Vertical</th><th>Pain</th><th>Automation to pitch</th></tr></thead><tbody>
+${[["Dental / chiro / PT","Missed calls, no-shows, intake forms","AI receptionist, SMS reminders, digital intake"],["Med spas / salons / barbers","DMs and calls after hours, rebooking","24/7 booking bot on IG, web and phone; rebooking nudges"],["Real estate / property mgmt","Lead response time, tenant requests","Instant lead reply, showing scheduler, maintenance triage"],["Law / CPA / insurance","Intake, document collection, status calls","Intake bot, document chaser, auto status emails"],["Restaurants / cafés","Reviews, catering inquiries, scheduling","Review-reply drafts, catering quote bot, shift scheduling"],["Contractors / HVAC / auto","Quotes, missed calls on jobsites","Missed-call text-back, quote follow-up, invoice reminders"],["Fitness / yoga","Trial follow-up, churn","Trial-to-member sequence, win-back campaigns"]].map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}
+</tbody></table></div><div class="callout small">Start with 2 verticals: <b>dental/med spa</b> and <b>property management/real estate</b>. High ticket, heavy admin, owners feel the pain.</div></section>
+<section><h2>Service menu</h2><div class="grid g2">
+${[["Front desk & leads",["AI phone receptionist: answers, books, takes messages, after hours","Missed-call text-back","Website / IG / Facebook chat bot trained on their FAQs","Speed-to-lead: reply to web form, Zillow or Yelp leads in under 60 seconds"]],["Scheduling & retention",["Booking + reminder SMS and email to cut no-shows","Rebooking and win-back sequences","Review requests after each visit + AI-drafted review replies"]],["Back office",["Invoice and payment reminders; QuickBooks entry from receipts","Document collection chaser for CPAs, lawyers, lenders","Email triage with drafted replies for staff to approve","Meeting notes → CRM updates → follow-up drafts","Onboarding checklists; SOP knowledge-base bot"]],["Marketing",["Social post calendar from their photos and promos","Monthly newsletter drafted automatically","Lead reporting dashboard (calls, bookings, revenue by source)"]]].map(([h,l])=>`<div class="card"><h3 style="margin-top:0">${h}</h3><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}
+</div><p class="small muted">Build with: n8n, Make, Zapier, Claude/OpenAI APIs, Twilio, Retell or Vapi (voice), GoHighLevel, Google Workspace, Airtable.</p></section>
+<section><h2>Packages</h2><div class="grid g4">
+${[["Time Audit","Free","30-minute visit + one-page report"],["Quick Win","$750–1,500","1 automation, live in 7 days"],["Starter System","$2,500–5,000 + $300–600/mo","3 automations, staff training, 30 days support"],["Ops Partner","$1,000–2,500/mo","Ongoing builds, monitoring, new automations"]].map(([a,b,c])=>`<div class="card"><div class="eyebrow">${a}</div><div style="font:500 24px/1.2 var(--display);margin:6px 0">${b}</div><div class="small muted">${c}</div></div>`).join("")}
+</div><div class="callout small">First 3 clients: 40% “founding client” discount in exchange for a testimonial, case study and permission to use their numbers.</div></section>
+<section><h2>Outreach channels</h2><ol>
+<li><b>Walk-ins</b>: Tue–Thu, 10–11:30am or 2–4pm. Bring a one-pager with a QR code to book the audit.</li>
+<li><b>Cold email</b>: 3-step sequence (Scripts tab).</li><li><b>Phone</b>: ask the front desk for the owner or office manager.</li>
+<li><b>LinkedIn</b>: connect with local owners, then a short note.</li>
+<li><b>Networking</b>: Sherman Oaks Chamber of Commerce, a BNI chapter (claim the “AI automation” seat), VICA events.</li>
+<li><b>Content</b>: Nextdoor business page, Google Business Profile, a weekly short video.</li>
+<li><b>Free workshop</b>: “AI for Valley Small Businesses,” 45 minutes; book audits on the spot.</li></ol>
+<div class="callout small"><b>Weekly cadence:</b> 15 walk-ins · 50 emails · 20 calls · 15 LinkedIn notes · 1 networking event. Track them on the Today tab.</div></section>
+<section><h2>Legal basics</h2><div class="callout warn"><ul style="margin:0">
+<li><b>Cold email:</b> CAN-SPAM: real name, physical address and an opt-out line in every email.</li>
+<li><b>Texting:</b> no cold texts or auto-dialers (TCPA). Text only people who opted in.</li>
+<li><b>Client data:</b> dental/medical: HIPAA-compliant tools and a BAA, or keep away from patient records.</li>
+<li><b>Business:</b> LLC or DBA, separate bank account, simple service agreement.</li></ul></div></section>`}
+
+/* ---------- Scripts ---------- */
+const SCRIPTS=[["Walk-in (30 seconds)","Hi, I'm Brandon with Thornless AI. I live right here on Lemona. I help local businesses set up AI tools that handle calls, booking and follow-ups so staff aren't buried. Quick question: about how many calls do you miss in a busy day? … That's usually the first thing I fix. I do a free 30-minute time audit for nearby businesses. Can I leave this with the owner? Who's the best person to talk to?"],
+["Email 1 · Day 1 · Subject: quick question about [Business] calls","Hi [Name],\n\nI'm a neighbor in Sherman Oaks (near Lemona & Ventura) and I run Thornless AI. We build AI automations that take the busywork off local businesses.\n\nI noticed [specific: online booking isn't available / a few reviews mention trouble getting through]. For [vertical], I usually set up an assistant that answers after-hours calls and texts back missed calls, so leads book themselves instead of calling a competitor.\n\nI'm offering free 30-minute time audits to a few businesses nearby. Worth a quick chat this week?\n\nBrandon Rose · Thornless AI\n[phone] · [site]\n\nIf you'd rather not hear from me, just reply \"no thanks.\"\n[mailing address]"],
+["Email 2 · Day 4 · Subject: re: [Business]","Hi [Name], a quick example: a [similar business] was missing about 8 calls a day. After an AI text-back plus booking link, roughly half of those turned into appointments within the first month. Happy to show you how that would look for [Business]. 15 minutes?\n\n(Use a real result once you have one. Until then, describe what the system does.)"],
+["Email 3 · Day 9 · Subject: closing the loop","Hi [Name], I don't want to clutter your inbox. If saving your front desk a few hours a week isn't a priority right now, no problem. If it is, here's my calendar: [link]. Either way, good luck this season."],
+["Phone opener","Hi, this is Brandon with Thornless AI, a local business here in Sherman Oaks. Is [Owner] in? … I help offices like yours cut missed calls and admin work with AI. Is there a better time or email to reach them?"],
+["Voicemail (under 20 seconds)","Hi [Name], Brandon Rose with Thornless AI, local in Sherman Oaks. I help [vertical]s stop losing missed calls with an AI assistant. I'll send a quick email. My number's [number]. Thanks."]];
+function vScripts(){return `<section><h2>Scripts</h2><p class="muted small">Copy, fill the [brackets], send.</p>${SCRIPTS.map(([h,t],i)=>`<h3>${esc(h)}</h3><div class="script"><button class="btn copy" data-copy="${i}">Copy</button>${esc(t)}</div>`).join("")}</section>`}
+
+/* ---------- Process ---------- */
+function vProcess(){return `<section><h2>Discovery call / audit (30 min)</h2><div class="tbl" style="max-height:none"><table><thead><tr><th>Minute</th><th>Step</th></tr></thead><tbody>
+${[["0–3","Rapport. Mention the neighborhood."],["3–15","Walk me through a typical day for your front desk. What do you or your staff do over and over? How many calls or messages go unanswered? What happens to a lead after hours? What software do you use? If you got 10 hours a week back, what would you do with it?"],["15–22","Quantify: “X missed calls × $Y per customer ≈ $Z a month left on the table.”"],["22–27","Live demo: an AI chat or voice agent trained on their website. Build it the night before."],["27–30","“I’ll send a one-page plan with the top 3 automations and pricing by Thursday. Can we book 15 minutes Friday?” Book it before you hang up."]].map(r=>`<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</tbody></table></div></section>
+<section><h2>Proposal (within 48 hours)</h2><ul><li>Their problem, in their own words</li><li>3 automations, each with hours or dollars saved</li><li>Timeline: live in 7–14 days</li><li>Price: a recommended option and a smaller one</li><li>Guarantee: “If it doesn’t save X hours in 30 days, I’ll fix it free or refund the setup.”</li><li>Sign-and-pay link (Stripe or e-sign)</li></ul></section>
+<section><h2>Follow-up after the proposal</h2><div class="tbl" style="max-height:none"><table><thead><tr><th>Day</th><th>Action</th></tr></thead><tbody>
+${[["0","Proposal sent, review call booked"],["2","“Any questions?” + 60-second Loom walkthrough"],["5","Call"],["10","Send a relevant result or mini case study"],["20","“Should I close your file, or is timing just off?”"],["45 / 90","Seasonal check-in"]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</tbody></table></div><p class="small muted">Cold leads get a 90-day re-touch. Don’t delete them.</p></section>
+<section><h2>After you close</h2><ol><li>Kickoff: tool access, FAQs, pricing.</li><li>Build, test, go live, train staff (record a Loom).</li><li>Measure 30 days: calls answered, bookings, hours saved.</li><li>Case study with real numbers, Google review, ask for 2 referrals.</li><li>Upsell the next automation; move to a retainer.</li></ol></section>`}
+
+/* ---------- HubSpot ---------- */
+let HS={connected:false,portal:"",busy:false};
+function vHub(){const n=S.leads.length,inHs=S.leads.filter(l=>l.hs).length;return `<section><h2>HubSpot</h2>
+<div class="card"><div id="hsState" class="muted">Checking connection…</div></div></section>
+<section><div class="grid g2">
+<div class="card"><h3 style="margin-top:0">1 · Connect (one time)</h3><ol class="small">
+<li>In HubSpot, open <b>Settings (gear) → Integrations → Private Apps</b>. On newer accounts it’s <b>Development → Legacy apps → Create legacy app → Private</b>.</li>
+<li>Name it “Planner.” Under Scopes, tick <code>crm.objects.companies.read</code>, <code>crm.objects.companies.write</code> and <code>crm.objects.notes.write</code> (search each name).</li>
+<li>Create the app, copy its access token and paste it below. It’s kept on your planner server only and never shown again.</li></ol>
+<div class="row"><input id="hsTok" type="password" placeholder="pat-na1-…" style="flex:1;min-width:200px" autocomplete="off"><button class="btn pri" data-hs="connect">Connect</button></div>
+<div class="row" style="margin-top:8px"><button class="btn" data-hs="disconnect">Disconnect</button></div></div>
+<div class="card"><h3 style="margin-top:0">2 · Send the list</h3>
+<p class="small"><b>${inHs} of ${n}</b> businesses are in HubSpot. “Send new businesses” creates a HubSpot company for each one that isn’t there yet (name, phone, website, address, city, ZIP) plus a note with the email, category, rating and your notes.</p>
+<div class="row"><button class="btn pri" data-hs="push">Send new businesses</button><button class="btn" data-hs="sync">Sync stages & notes</button></div>
+<p class="small muted" style="margin-top:10px">“Sync stages & notes” adds a HubSpot note for each business whose stage, next date or notes changed here since the last sync.</p>
+<p class="small" id="hsMsg"></p></div></div>
+<div class="callout small" style="margin-top:14px"><b>Prefer HubSpot’s own importer?</b> Download the CSV on the Outreach List tab, then in HubSpot go to <b>CRM → Companies → Import → Start an import → File from computer → One file → One object → Companies</b>. The column names already match HubSpot fields.<br><br><b>Claude can work in HubSpot too:</b> once the HubSpot connector is linked in Claude, ask Claude to log calls, move deals or draft follow-ups there.</div></section>`}
+async function hubStatus(){try{const d=await api("GET",null,"/hubspot");HS.connected=d.connected;HS.portal=d.portal||"";if(HS.portal&&S.hs.portal!==HS.portal){S.hs.portal=HS.portal;save()}}catch(e){HS.connected=false}
+  const el=$("#hsState");if(!el)return;el.innerHTML=HS.connected?`<span class="hs-ok">● Connected</span>${HS.portal?` to HubSpot account ${esc(HS.portal)} · <a href="https://app.hubspot.com/contacts/${esc(HS.portal)}/objects/0-2/views/all/list" target="_blank" rel="noopener">Open companies in HubSpot ↗</a>`:""}`:`<span class="hs-bad">● Not connected</span> <span class="muted small">Follow step 1 below.</span>`}
+function hsMsg(t){const m=$("#hsMsg");if(m)m.textContent=t}
+async function hsAction(act,b){
+  if(act==="connect"){const tok=$("#hsTok").value.trim();if(!tok){hsMsg("Paste the access token first.");return}const d=await api("POST",{token:tok},"/hubspot/connect");$("#hsTok").value="";hsMsg("Connected to HubSpot account "+d.portal+".");await hubStatus()}
+  if(act==="disconnect"){if(!confirm("Remove the HubSpot token from the planner server?"))return;await api("POST",{},"/hubspot/disconnect");hsMsg("Disconnected.");await hubStatus()}
+  if(act==="push"){const todo=S.leads.filter(l=>!l.hs);if(!todo.length){hsMsg("Everything is already in HubSpot.");return}
+    let done=0;for(let i=0;i<todo.length;i+=50){const chunk=todo.slice(i,i+50);hsMsg(`Sending ${Math.min(i+50,todo.length)} of ${todo.length}…`);
+      const d=await api("POST",{leads:chunk.map(l=>({id:l.id,name:l.name,phone:l.phone,website:l.website,address:l.address,city:l.city,state:l.state,zip:l.zip,email:l.email,category:l.category||l.industry,rating:l.rating,reviews:l.reviews,stage:l.stage,notes:l.notes}))},"/hubspot/push");
+      for(const r of d.results||[]){const l=S.leads.find(x=>x.id===r.id);if(l&&r.hs){l.hs=r.hs;l.hsDirty=false;done++}}save()}
+    render();hsMsg(`Sent ${done} business${done===1?"":"es"} to HubSpot.`)}
+  if(act==="sync"){const todo=S.leads.filter(l=>l.hs&&l.hsDirty);if(!todo.length){hsMsg("Nothing changed since the last sync.");return}
+    const d=await api("POST",{leads:todo.map(l=>({id:l.id,hs:l.hs,stage:l.stage,next:l.next,notes:l.notes}))},"/hubspot/sync");
+    let n=0;for(const r of d.results||[]){const l=S.leads.find(x=>x.id===r.id);if(l&&r.ok){l.hsDirty=false;n++}}save();hsMsg(`Synced ${n} update${n===1?"":"s"} to HubSpot.`)}
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click",async e=>{
+  const tb=e.target.closest("[data-tab]");if(tb){tab=tb.dataset.tab;try{localStorage.setItem("aimp-tab",tab)}catch(x){}render();window.scrollTo({top:0});return}
+  const cb=e.target.closest("[data-cnt]");if(cb){S.counts[cb.dataset.cnt]=Math.max(0,(S.counts[cb.dataset.cnt]||0)+ +cb.dataset.d);save();render();return}
+  const gs=e.target.closest("[data-gostage]");if(gs){filt.stage=gs.dataset.gostage;tab="leads";render();return}
+  const fs=e.target.closest("[data-fstage]");if(fs){filt.stage=fs.dataset.fstage;render();return}
+  const dl=e.target.closest("[data-del]");if(dl){const l=S.leads.find(x=>x.id===dl.dataset.del);if(l&&confirm("Remove "+l.name+" from the list?")){S.leads=S.leads.filter(x=>x!==l);save();render()}return}
+  const cp=e.target.closest("[data-copy]");if(cp){navigator.clipboard.writeText(SCRIPTS[+cp.dataset.copy][1]).then(()=>{cp.textContent="Copied";setTimeout(()=>cp.textContent="Copy",1200)});return}
+  const ac=e.target.closest("[data-act]");if(ac){
+    if(ac.dataset.act==="export")exportCsv();
+    if(ac.dataset.act==="add"){const name=prompt("Business name?");if(!name)return;const phone=prompt("Phone (optional)")||"";S.leads.unshift({id:uid(),name,phone,industry:"",category:"",address:"",city:"",state:"CA",zip:"",website:"",email:"",mi:0,rating:"",reviews:"",stage:"New",next:"",notes:"",hs:""});filt={stage:"",q:"",ind:"",due:false};save();render()}
+    return}
+  const hb=e.target.closest("[data-hs]");if(hb&&!HS.busy){HS.busy=true;hb.disabled=true;try{await hsAction(hb.dataset.hs,hb)}catch(err){hsMsg("HubSpot said: "+err.message)}finally{HS.busy=false;hb.disabled=false}}
+});
+document.addEventListener("change",e=>{
+  {const t=e.target;if(t.dataset&&t.dataset.ms&&S){S.msDone=S.msDone||{};if(t.checked)S.msDone[t.dataset.ms]=true;else delete S.msDone[t.dataset.ms];const m=MS.find(x=>x.id===t.dataset.ms);if(m)m.done=t.checked;save();render();return}}
+  const t=e.target,tr=t.closest&&t.closest("tr[data-id]");
+  if(tr&&t.dataset.f&&t.dataset.f!=="notes"){const l=S.leads.find(x=>x.id===tr.dataset.id);if(!l)return;l[t.dataset.f]=t.value;if(l.hs)l.hsDirty=true;
+    if(t.dataset.f==="stage"){if(AUTO_NEXT[t.value]&&!l.next)l.next=addDays(AUTO_NEXT[t.value]);if(CLOSED.includes(t.value))l.next="";save();render()}else{save();t.classList.toggle("due",!!t.value&&t.value<=today())}return}
+  if(t.id==="find"){filt.ind=t.value;render()}
+  if(t.id==="fdue"){filt.due=t.checked;render()}
+  if(t.id==="csvIn"&&t.files[0]){readCsv(t.files[0]);t.value=""}
+});
+document.addEventListener("input",e=>{const t=e.target;
+  if(t.id==="fq"){filt.q=t.value;const b=$("#leadBody");if(b)b.innerHTML=leadRows();const n=$("#nShown");if(n)n.textContent=shown().length+" shown";return}
+  const tr=t.closest&&t.closest("tr[data-id]");if(tr&&t.dataset.f==="notes"){const l=S.leads.find(x=>x.id===tr.dataset.id);if(l){l.notes=t.value;if(l.hs)l.hsDirty=true;save()}}});
+
+/* ---------- boot + live refresh ---------- */
+setInterval(async()=>{if(document.hidden||!S)return;try{const r=await fetch("/api/project/"+SLUG,{credentials:"same-origin"});if(!r.ok)return;const d=await r.json();const a=document.activeElement;
+  if(d.version>ver&&!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))){S=d.data;S.hs=S.hs||{portal:""};S.counts=S.counts||{};ver=d.version;render()}}catch(e){}},30000);
+(async()=>{try{const d=await api("GET");S=d.data||fresh();S.hs=S.hs||{portal:""};S.counts=S.counts||{};ver=d.version||0;render();lab().textContent="Saved";if(!d.data)save();loadMS()}catch(e){lab().textContent="Couldn’t load: "+e.message}})();
+</script>
+</body>
+</html>

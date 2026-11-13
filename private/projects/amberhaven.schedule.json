@@ -1,0 +1,14 @@
+{
+  "project": "AmberHaven",
+  "rules": "Candle warmer lamp dropshipping store (amberhaven.store). Deadlines follow docs/launch-plan.md in ~/amberhaven and are ticked off by hand in the planner.",
+  "milestones": [
+    {"id": "ah-supplier", "title": "AutoDS supplier linked + product images imported", "due": "2026-11-14"},
+    {"id": "ah-payments", "title": "Shopify Payments + store policies set", "due": "2026-11-15"},
+    {"id": "ah-theme", "title": "Theme, homepage, logo done + test order refunded", "due": "2026-11-17"},
+    {"id": "ah-ads", "title": "Meta + TikTok ad accounts and pixels set up", "due": "2026-11-18"},
+    {"id": "ah-live", "title": "Product ACTIVE, HAVEN15 code, first ads live", "due": "2026-11-20"},
+    {"id": "ah-bfcm", "title": "Black Friday push (ads cost most Nov 27 – Dec 1)", "due": "2026-11-27"},
+    {"id": "ah-review", "title": "Test budget review: kill or scale each creative", "due": "2026-11-30"},
+    {"id": "ah-cutoff", "title": "Holiday shipping cutoff: end the gift angle", "due": "2026-12-15"}
+  ]
+}

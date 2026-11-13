@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Faceless YouTube – Corners Cut</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='4' width='22' height='16' rx='5' fill='%23ff3d3d'/%3E%3Cpath d='M10 8.5v7l6-3.5z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#0f1210;--surface:#161b18;--surface2:#1c2320;--fg:#ece6da;--muted:#a69f92;--faint:#6f6a61;
+  --line:rgba(236,230,218,.12);--line-soft:rgba(236,230,218,.08);
+  --gold:#c9a96a;--gold-soft:rgba(201,169,106,.14);--red:#ff4e45;--ok:#8fae8b;
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root{--bg:#f6f2ea;--surface:#fffdf8;--surface2:#f1ece2;--fg:#231f1a;--muted:#6d6558;--faint:#9a9285;--line:rgba(35,31,26,.14);--line-soft:rgba(35,31,26,.08);--gold:#8f6f32;--gold-soft:rgba(143,111,50,.12);color-scheme:light}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.wrap{max-width:1180px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 72px max(16px,env(safe-area-inset-left))}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.back{font-size:13px;text-decoration:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.back:hover{color:var(--fg);border-color:var(--gold)}
+.save{margin-left:auto;font-size:12px;color:var(--faint)}
+.eyebrow{font:600 11px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font:500 clamp(38px,6vw,64px)/1.02 var(--display);margin:6px 0 10px}
+.lede{color:var(--muted);max-width:62ch;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:26px 0 8px}
+.stat{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font:500 34px/1 var(--display)}
+.stat span{font-size:12px;color:var(--muted)}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--red))}
+section{margin-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px}
+.sec-head h2{font:500 30px var(--display);margin:0}
+.sec-head .meta{margin-left:auto;font-size:12px;color:var(--faint)}
+.card{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px}
+/* pipeline */
+.vids{display:flex;flex-direction:column;gap:10px}
+.vid{display:grid;grid-template-columns:34px minmax(0,1fr) 190px;gap:14px;padding:14px 16px;align-items:start}
+.vid .n{font:500 26px/1 var(--display);color:var(--gold)}
+.vid .t{font-weight:600;font-size:15.5px}
+.vid .t input{all:unset;width:100%;font-weight:600}
+.vid .h{color:var(--muted);font-size:13.5px;margin-top:2px}
+.vid .h input{all:unset;width:100%}
+.vid .pf{font-size:12px;color:var(--faint);margin-top:4px}
+.vid .more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.vid label{display:flex;flex-direction:column;gap:3px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.vid textarea,.vid input[type=date],.vid input[type=number],.vid input[type=url],.vid select{font:13px var(--body);color:var(--fg);background:var(--surface2);border:1px solid var(--line-soft);border-radius:7px;padding:6px 8px;width:100%;text-transform:none;letter-spacing:0}
+.vid textarea{resize:vertical;min-height:34px;grid-column:1/-1}
+.vid .side{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.st{font:600 12px var(--body);border-radius:999px;padding:7px 10px;border:1px solid var(--line);background:var(--surface2);color:var(--fg);cursor:pointer}
+.st[data-s="Published"]{background:color-mix(in srgb,var(--ok) 30%,transparent);border-color:var(--ok)}
+.st[data-s="Scheduled"]{background:color-mix(in srgb,var(--gold) 25%,transparent);border-color:var(--gold)}
+.st[data-s="Not started"]{color:var(--muted)}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--fg)}
+.chip:hover{border-color:var(--gold)}
+.vid.done{opacity:.75}
+.addv{all:unset;cursor:pointer;color:var(--gold);font-size:13px;padding:10px 4px}
+.x{all:unset;cursor:pointer;color:var(--faint);font-size:12px;align-self:flex-end}
+.x:hover{color:var(--red)}
+@media (max-width:760px){.vid{grid-template-columns:28px minmax(0,1fr)}.vid .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}.vid .more{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;counter-reset:s}
+.step{padding:16px;position:relative}
+.step::before{counter-increment:s;content:counter(s);font:500 30px/1 var(--display);color:var(--gold);display:block;margin-bottom:6px}
+.step b{display:block;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:13.5px}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl td.num{font-family:var(--mono);font-size:12.5px;white-space:nowrap;text-align:right}
+.tbl tr:last-child td{border-bottom:0}
+.scroll{overflow-x:auto}
+.up{color:var(--ok)}.down{color:var(--red)}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.res a{display:block;padding:14px 16px;text-decoration:none;color:var(--fg)}
+.res a:hover{border-color:var(--gold)}
+.res a span{display:block;font-size:12.5px;color:var(--muted)}
+.notes{width:100%;min-height:160px;resize:vertical;font:14px/1.6 var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:14px 16px}
+.tl{--c:#2fd36b;display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);vertical-align:middle;box-shadow:0 0 0 2px var(--bg),0 0 9px var(--c);animation:tlpulse 1.6s ease-in-out infinite}
+.tl.orange{--c:#ff9f1a}.tl.red{--c:#ff3b30;animation-duration:.8s}
+@keyframes tlpulse{50%{opacity:.3;box-shadow:0 0 0 2px var(--bg),0 0 1px var(--c)}}
+@media (prefers-reduced-motion:reduce){.tl{animation:none}}
+.tl-pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.ms-list{padding:4px 0}
+.ms-row{display:grid;grid-template-columns:12px 18px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line-soft);font-size:14px}
+.ms-row:last-child{border-bottom:0}
+.ms-dot{width:10px;height:10px;border-radius:50%;background:#2fd36b}
+.ms-row.orange .ms-dot{background:#ff9f1a}.ms-row.red .ms-dot{background:#ff3b30}.ms-row.done .ms-dot{background:var(--faint)}
+.ms-row.red .ms-t{color:#ff6b62}
+.ms-row.done .ms-t{text-decoration:line-through;color:var(--faint)}
+.ms-due{font:12.5px var(--mono);color:var(--muted);white-space:nowrap}
+.ms-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ms-src{font-size:12px;color:#ff9f1a}
+.ms-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold)}
+.ms-empty{color:var(--faint);padding:10px 14px;margin:0}
+@media (max-width:600px){.ms-row{grid-template-columns:12px 18px minmax(0,1fr)}.ms-due{grid-column:3}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><p style="color:var(--muted)">Opening project…</p></div>
+<script>
+"use strict";
+const SLUG="faceless-youtube";
+const REPO="https://github.com/BrandonRose2/faceless-youtube-clipping";
+const SEED=/*SEED*/null;
+const STATUSES=["Not started","Researching","Scripting","Voiceover","Visuals","Editing","Title & thumbnail","Scheduled","Published"];
+/* ---- schedule: deadlines come from the repo's plan/schedule.json (via the server) ---- */
+let SCHED=[],schedSource="";
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const addDays=(k,n)=>{const d=new Date(k+"T12:00");d.setDate(d.getDate()+n);return ymd(d)};
+const sIdx=s=>STATUSES.indexOf(s);
+const byDue=(a,b)=>(a.due||"9").localeCompare(b.due||"9");
+const niceDay=k=>new Date(k+"T12:00").toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"});
+const vidByN=n=>S.videos.find(v=>+v.n===+n);
+// Done-ness from this page's live data, so ticks and status changes show at once.
+function milestones(){return SCHED.map(m=>{const v=m.video!=null?vidByN(m.video):null;
+  return {...m,done:m.doneWhen?!!v&&sIdx(v.status)>=sIdx(m.doneWhen):!!(S.msDone||{})[m.id]}})}
+async function loadSched(){
+  try{const r=await fetch("/api/project/"+SLUG+"/milestones",{credentials:"same-origin"});if(!r.ok)throw 0;const d=await r.json();SCHED=d.milestones||[];schedSource=d.source||"";
+    // Fill in empty publish dates from each video's "Goes live" deadline.
+    let ch=false;for(const m of SCHED)if(m.doneWhen==="Published"){const v=vidByN(m.video);if(v&&!v.date){v.date=m.due;ch=true}}
+    render();if(ch)save();
+  }catch(e){}
+}
+// Traffic light: red = a deadline has passed, orange = one is due today or tomorrow, green = on track.
+function lightOf(ms,today){
+  if(!ms.length)return null;
+  const open=ms.filter(m=>!m.done).sort(byDue),soon=addDays(today,1);
+  const late=open.filter(m=>m.due<today),near=open.filter(m=>m.due>=today&&m.due<=soon);
+  if(late.length)return{c:"red",m:late[0],n:late.length};
+  if(near.length)return{c:"orange",m:near[0],n:near.length};
+  return{c:"green",m:open[0]||null,n:0};
+}
+function lightText(L){
+  if(!L)return"Loading schedule…";
+  if(L.c==="red")return `${L.n} past due · ${L.m.t} was due ${niceDay(L.m.due)}`;
+  if(L.c==="orange")return `Due soon · ${L.m.t} on ${niceDay(L.m.due)}`;
+  return L.m?`On track · next: ${L.m.t} on ${niceDay(L.m.due)}`:"All deadlines done";
+}
+let showAll=false;
+function scheduleHTML(){
+  const today=ymd(new Date()),ms=milestones().sort(byDue),horizon=addDays(today,14),soon=addDays(today,1);
+  const list=showAll?ms:ms.filter(m=>m.due<=horizon&&(!m.done||m.due>=addDays(today,-3)));
+  const L=lightOf(ms,today);
+  return `<section><div class="sec-head"><h2>Schedule</h2><span class="meta">${L?`<span class="tl ${L.c}"></span> `:""}${esc(lightText(L))}</span></div>
+    <div class="card ms-list">${list.map(m=>{const c=m.done?"done":m.due<today?"red":m.due<=soon?"orange":"green";return `
+      <div class="ms-row ${c}"><span class="ms-dot"></span>
+        <input type="checkbox" data-ms="${esc(m.id)}" ${m.done?"checked":""} aria-label="Done: ${esc(m.t)}">
+        <span class="ms-t">${esc(m.t)}</span>
+        <span class="ms-due">${niceDay(m.due)}</span></div>`}).join("")||`<p class="ms-empty">${SCHED.length?"Nothing due in the next two weeks.":"Loading schedule…"}</p>`}</div>
+    <div class="ms-foot"><button class="addv" data-act="msall">${showAll?"Show the next two weeks":`Show the full schedule (${ms.length} deadlines)`}</button>
+    <a class="chip" href="${REPO}/blob/main/plan/SCHEDULE.md" target="_blank" rel="noopener">Schedule in the repo ↗</a>${schedSource&&schedSource!=="repo"?`<span class="ms-src">Using a saved copy: GitHub couldn’t be reached</span>`:""}</div>
+  </section>`;
+}
+// Ticking a video deadline moves the video's status to match; unticking moves it back one step.
+function tickMs(id,on){
+  const m=SCHED.find(x=>x.id===id);if(!m)return;
+  if(!m.doneWhen){S.msDone=S.msDone||{};if(on)S.msDone[id]=true;else delete S.msDone[id];return}
+  const v=vidByN(m.video);if(!v)return;
+  if(on&&sIdx(v.status)<sIdx(m.doneWhen))v.status=m.doneWhen;
+  if(!on&&sIdx(v.status)>=sIdx(m.doneWhen))v.status=STATUSES[Math.max(0,sIdx(m.doneWhen)-1)];
+}
+function topLight(){const L=lightOf(milestones(),ymd(new Date()));return L?`<span class="tl-pill" title="${esc(lightText(L))}"><span class="tl ${L.c}"></span>${L.c==="red"?"Past due":L.c==="orange"?"Deadline soon":"On track"}</span>`:""}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&S)loadSched()});
+const STEPS=[
+  ["Pick the topic","The next video in the schedule. Check its keywords in vidIQ before the script is written."],
+  ["Draft the script","pipeline/write_script.py drafts the narration through FreeLLMAPI and saves it in the repo’s scripts folder, with visual cues in brackets."],
+  ["Fact-check it","Every item in the script’s “Claims to verify” list is checked against a source, by you or a Claude chat. Until then it is only a draft."],
+  ["Record the voiceover","Kokoro, a free voice engine on your Mac, reads the script in the narration voice you picked."],
+  ["Footage and diagrams","Free Pexels stock clips are matched to the visual cues, with photographers credited. Our own diagrams explain the failure, like the bolt diagram in the cold open."],
+  ["Assemble the video","ffmpeg cuts the footage to the voiceover and builds the final video. The cold-open test (tools/render_coldopen_test.py) is the prototype."],
+  ["Review and publish","It uploads to YouTube as private. You watch it, set the title and thumbnail (score them in vidIQ), then schedule it for Friday."],
+];
+const RESOURCES=[
+  ["Corners Cut channel","Your YouTube channel","https://www.youtube.com/channel/UCWAbqWzzr8IKL002Z0TRumw"],
+  ["Pipeline plan","How each video gets made, step by step",REPO+"/blob/main/docs/PIPELINE.md"],
+  ["GitHub repo","Plans, scripts, pipeline and tools",REPO],
+  ["Video #1 script","The Big Dig ceiling collapse",REPO+"/blob/main/scripts/01-big-dig-ceiling-collapse.md"],
+  ["Channel plan workbook","Niches, lanes, keywords, first 10 videos",REPO+"/blob/main/plan/Engineering_Disasters_Channel_Plan.xlsx"],
+  ["YouTube Studio","Upload, schedule and settings","https://studio.youtube.com"],
+  ["vidIQ","Keywords, outliers, title scores","https://app.vidiq.com"],
+  ["Pexels","Free stock footage","https://www.pexels.com/videos/"],
+];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeHref=u=>/^https?:\/\//i.test(String(u||"").trim())?String(u).trim():"";
+const uid=()=>Math.random().toString(36).slice(2,9);
+const fmt=n=>typeof n==="number"?n.toLocaleString():esc(n);
+let S=null,ver=0,timer=null;
+
+async function api(method,body){
+  const r=await fetch("/api/project/"+SLUG,{method,credentials:"same-origin",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined});
+  if(r.status===401){location.href="/login";throw new Error("signed out")}
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  return r.json();
+}
+function fresh(){
+  return {v:1,notes:"",videos:SEED.videos.map(v=>({id:uid(),n:v.n,topic:v.topic,hook:v.hook,proof:v.proof,status:"Not started",date:"",views:"",notes:"",script:v.n===1?REPO+"/blob/main/scripts/01-big-dig-ceiling-collapse.md":""}))};
+}
+function save(){
+  const lab=()=>$("#save")||{};lab().textContent="Saving…";clearTimeout(timer);
+  timer=setTimeout(async()=>{try{const d=await api("PUT",S);ver=d.version;lab().textContent="Saved"}catch(e){lab().textContent="Couldn’t save. Check your connection."}},400);
+}
+const findV=id=>S.videos.find(v=>v.id===id);
+
+function render(){
+  const vids=S.videos,pub=vids.filter(v=>v.status==="Published").length,active=vids.filter(v=>v.status!=="Not started"&&v.status!=="Published").length;
+  const views=vids.reduce((a,v)=>a+(+v.views||0),0);
+  const next=vids.find(v=>v.status!=="Published");
+  $("#app").innerHTML=`
+  <div class="top"><a class="back" href="/">← Life Planner</a>${topLight()}<span class="save" id="save">Saved</span></div>
+  <div class="eyebrow">Project · Faceless YouTube – Corners Cut</div>
+  <h1>Engineering Disasters</h1>
+  <p class="lede">A faceless documentary channel on engineering failures: what went wrong, why, and what changed. Track every video from idea to published here.</p>
+  <div class="stats">
+    <div class="stat"><b>${pub}<small style="font-size:18px;color:var(--faint)"> / ${vids.length}</small></b><span>Published</span><div class="bar"><i style="width:${vids.length?pub/vids.length*100:0}%"></i></div></div>
+    <div class="stat"><b>${active}</b><span>In progress</span></div>
+    <div class="stat"><b>${views?views.toLocaleString():"0"}</b><span>Total views logged</span></div>
+    <div class="stat"><b style="font-size:20px;line-height:1.2">${next?esc(next.topic||"Untitled video"):"All done"}</b><span>Up next</span></div>
+  </div>
+
+  ${scheduleHTML()}
+  <section><div class="sec-head"><h2>Video pipeline</h2><span class="meta">Changes save automatically</span></div>
+    <div class="vids">${vids.map(v=>{const sh=safeHref(v.script);return `
+      <div class="vid card ${v.status==="Published"?"done":""}">
+        <div class="n">${esc(v.n)}</div>
+        <div>
+          <div class="t"><input data-f="topic" data-id="${v.id}" value="${esc(v.topic)}" aria-label="Topic" placeholder="Topic"></div>
+          <div class="h"><input data-f="hook" data-id="${v.id}" value="${esc(v.hook)}" aria-label="Angle or hook" placeholder="Angle or hook"></div>
+          ${v.proof?`<div class="pf">Proof it works: ${esc(v.proof)}</div>`:""}
+          <div class="more">
+            <label>Publish date<input type="date" data-f="date" data-id="${v.id}" value="${esc(v.date)}"></label>
+            <label>Views<input type="number" min="0" data-f="views" data-id="${v.id}" value="${esc(v.views)}" placeholder="0"></label>
+            <label>Script link<input type="url" data-f="script" data-id="${v.id}" value="${esc(v.script)}" placeholder="https://…"></label>
+            <textarea data-f="notes" data-id="${v.id}" placeholder="Notes: sources, voice, editor, ideas…" aria-label="Notes">${esc(v.notes)}</textarea>
+          </div>
+        </div>
+        <div class="side">
+          <select class="st" data-f="status" data-id="${v.id}" data-s="${esc(v.status)}" aria-label="Status for video ${esc(v.n)}">${STATUSES.map(s=>`<option ${s===v.status?"selected":""}>${s}</option>`).join("")}</select>
+          <div class="links">${sh?`<a class="chip" href="${esc(sh)}" target="_blank" rel="noopener">Script ↗</a>`:""}<a class="chip" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.topic||"")}" target="_blank" rel="noopener">Research ↗</a></div>
+          <button class="x" data-act="del" data-id="${v.id}" aria-label="Remove video ${esc(v.n)}">Remove</button>
+        </div>
+      </div>`}).join("")}
+    </div>
+    <button class="addv" data-act="add">+ Add a video</button>
+  </section>
+
+  <section><div class="sec-head"><h2>How each video gets made</h2><span class="meta">The automated pipeline, per the repo</span></div>
+    <div class="steps">${STEPS.map(s=>`<div class="step card"><b>${esc(s[0])}</b><p>${esc(s[1])}</p></div>`).join("")}</div>
+  </section>
+
+  <section><div class="sec-head"><h2>Keyword targets</h2><span class="meta">vidIQ, Nov 9, 2026</span></div>
+    <div class="card scroll"><table class="tbl"><thead><tr><th>Keyword</th><th style="text-align:right">Searches / mo</th><th style="text-align:right">Competition</th><th style="text-align:right">Trend</th><th>How to use it</th></tr></thead>
+    <tbody>${SEED.keywords.map(k=>`<tr><td>${esc(k.k)}</td><td class="num">${fmt(k.vol)}</td><td class="num">${fmt(k.comp)}</td><td class="num ${/^\+/.test(k.trend)?"up":/^-/.test(k.trend)?"down":""}">${esc(k.trend)}</td><td>${esc(k.use)}</td></tr>`).join("")}</tbody></table></div>
+  </section>
+
+  <section><div class="sec-head"><h2>Breakout videos to study</h2><span class="meta">vidIQ outliers, last 12 months</span></div>
+    <div class="card scroll"><table class="tbl"><thead><tr><th>Video</th><th>Channel</th><th style="text-align:right">Subs</th><th style="text-align:right">Views</th><th style="text-align:right">Breakout</th><th style="text-align:right">Length</th></tr></thead>
+    <tbody>${SEED.breakouts.map(b=>`<tr><td>${safeHref(b.url)?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</td><td>${esc(b.ch)}</td><td class="num">${fmt(b.subs)}</td><td class="num">${fmt(b.views)}</td><td class="num">${esc(b.x)}×</td><td class="num">${esc(b.len)}</td></tr>`).join("")}</tbody></table></div>
+  </section>
+
+  <section><div class="sec-head"><h2>Resources</h2></div>
+    <div class="res">${RESOURCES.map(r=>`<a class="card" href="${esc(r[2])}" target="_blank" rel="noopener">${esc(r[0])} ↗<span>${esc(r[1])}</span></a>`).join("")}</div>
+  </section>
+
+  <section><div class="sec-head"><h2>Notes</h2><span class="meta">Ideas, channel name, voice, editor contacts</span></div>
+    <textarea class="notes" data-f="pnotes" placeholder="Anything about the channel…">${esc(S.notes)}</textarea>
+  </section>`;
+}
+
+document.addEventListener("input",e=>{
+  const t=e.target,f=t.dataset.f;if(!f||!S)return;
+  if(f==="pnotes"){S.notes=t.value;return save()}
+  const v=findV(t.dataset.id);if(!v)return;
+  v[f]=t.value;save();
+  if(f==="status"){t.dataset.s=t.value;render()}
+});
+document.addEventListener("change",e=>{const id=e.target.dataset.ms;if(!id||!S)return;tickMs(id,e.target.checked);save();render()});
+document.addEventListener("change",e=>{const f=e.target.dataset.f;if(f==="views"||f==="date"||f==="script")render()});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b||!S)return;
+  if(b.dataset.act==="msall"){showAll=!showAll;render();return}
+  if(b.dataset.act==="add"){const n=Math.max(0,...S.videos.map(v=>+v.n||0))+1;S.videos.push({id:uid(),n,topic:"",hook:"",proof:"",status:"Not started",date:"",views:"",notes:"",script:""});save();render();
+    setTimeout(()=>{const i=document.querySelectorAll('[data-f="topic"]');i[i.length-1].focus()},0)}
+  if(b.dataset.act==="del"){const v=findV(b.dataset.id);if(v&&confirm(`Remove video ${v.n}${v.topic?": "+v.topic:""}?`)){S.videos=S.videos.filter(x=>x!==v);save();render()}}
+});
+// Edited on another device? Reload the data when you come back, unless you're typing.
+document.addEventListener("visibilitychange",async()=>{
+  if(document.visibilityState!=="visible"||!S)return;
+  try{const d=await api("GET");const a=document.activeElement;
+    if(d.version>ver&&!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))){S=d.data;ver=d.version;render()}}catch(e){}
+});
+(async()=>{
+  try{const d=await api("GET");S=d.data||fresh();ver=d.version||0;render();if(!d.data)save();loadSched()}
+  catch(e){$("#app").innerHTML=`<p>Couldn’t open the project. <a href="">Try again</a></p>`}
+})();
+</script>
+</body>
+</html>

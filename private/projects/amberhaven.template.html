@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect x=%274%27 y=%2716%27 width=%2756%27 height=%2732%27 rx=%276%27 fill=%27%23c9a96a%27/%3E%3Cpath d=%27M27 24l12 8-12 8z%27 fill=%27%230f1210%27/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 35c0 9-1 17 0 25' stroke='%235f8a5a' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 50c5-5 11-5 15-9-3 8-10 11-15 10z' fill='%236f9a68'/%3E%3Cpath d='M32 46c-4-4-9-4-12-7 2 6 7 8 12 8z' fill='%235f8a5a'/%3E%3Cpath d='M17 21c0-8 6-13 11-12 2-3 6-3 8 0 5-1 11 4 11 12 0 9-7 15-15 15S17 30 17 21z' fill='%23c8344a'/%3E%3Cpath d='M22 18c2-6 11-8 16-3 3 4 1 10-4 11-4 1-7-2-6-5 1-3 5-3 6-1' stroke='%237d1c2c' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M19 25c3 6 9 8 15 7' stroke='%239e2638' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#0f1210;--surface:#161b18;--surface2:#1c2320;--fg:#ece6da;--muted:#a69f92;--faint:#6f6a61;
+  --line:rgba(236,230,218,.12);--line-soft:rgba(236,230,218,.08);
+  --gold:#c9a96a;--gold-soft:rgba(201,169,106,.14);--red:#ff6a5f;--ok:#8fae8b;--blue:#8fb3d9;
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root{--bg:#f6f2ea;--surface:#fffdf8;--surface2:#f1ece2;--fg:#231f1a;--muted:#6d6558;--faint:#9a9285;--line:rgba(35,31,26,.14);--line-soft:rgba(35,31,26,.08);--gold:#8f6f32;--gold-soft:rgba(143,111,50,.12);--red:#c23b30;--ok:#4f7a4b;--blue:#3d6a99;color-scheme:light}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.wrap{max-width:1240px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 72px max(16px,env(safe-area-inset-left))}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.back{font-size:13px;text-decoration:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.back:hover{color:var(--fg);border-color:var(--gold)}
+.save{margin-left:auto;font-size:12px;color:var(--faint)}
+.eyebrow{font:600 11px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font:500 clamp(38px,6vw,62px)/1.02 var(--display);margin:6px 0 10px}
+h2{font:500 30px/1.1 var(--display);margin:0 0 12px}
+h3{font:600 13px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:22px 0 8px}
+.lede{color:var(--muted);max-width:70ch;margin:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:24px 0 6px;border-bottom:1px solid var(--line);padding-bottom:10px;position:sticky;top:0;background:var(--bg);z-index:5;padding-top:8px}
+.tabs button{font:500 13px var(--body);background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 15px;cursor:pointer}
+.tabs button.on{background:var(--gold);border-color:var(--gold);color:#0f1210}
+.tabs button:hover:not(.on){color:var(--fg);border-color:var(--gold)}
+section{margin-top:26px}
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px}
+.stat b{display:block;font:500 36px/1 var(--display)}
+.stat span{font-size:12px;color:var(--muted)}
+.callout{background:var(--gold-soft);border-left:3px solid var(--gold);border-radius:8px;padding:12px 16px;margin:10px 0}
+.warn{border-left-color:var(--red);background:rgba(255,106,95,.09)}
+ul,ol{margin:6px 0 10px;padding-left:22px}li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface)}
+td{padding:8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;overflow:auto;max-height:70vh}
+.pipe{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pill{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--muted);background:var(--surface);cursor:pointer}
+.pill b{color:var(--fg);margin-left:4px}
+.pill.on{border-color:var(--gold);color:var(--fg)}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{width:100%;min-height:34px;resize:vertical}
+.btn{font:500 13px var(--body);background:var(--surface2);border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:8px 14px;cursor:pointer}
+.btn:hover{border-color:var(--gold)}
+.btn.pri{background:var(--gold);color:#0f1210;border-color:var(--gold)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}.faint{color:var(--faint)}.small{font-size:12px}
+.lead-name{font-weight:600}
+.lead-sub{font-size:12px;color:var(--muted)}
+td .ctl{width:100%;min-width:120px}
+.due{color:var(--red);font-weight:600}
+.script{background:var(--surface2);border:1px solid var(--line-soft);border-radius:10px;padding:12px 14px;margin:8px 0 14px;white-space:pre-wrap;font-size:14px;position:relative}
+.script .copy{position:absolute;top:8px;right:8px;font-size:11px;padding:4px 9px}
+.counter{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.counter .n{font:500 26px/1 var(--display)}
+.counter button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--surface2);color:var(--fg);cursor:pointer;font-size:16px}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--gold)}
+.brand{display:flex;align-items:center;gap:16px}.brand .rose{width:clamp(56px,8vw,84px);height:auto;flex:none}.brand h1{margin-bottom:6px}
+.wk{margin-top:18px}.wk h3{margin:0 0 8px}.day{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line-soft)}.day.today{background:var(--gold-soft);border-radius:8px;padding:10px}.day .dl{font-weight:600;font-size:13px}.ev{display:flex;gap:10px;font-size:13.5px;padding:2px 0}.ev .tm{width:64px;flex:none;color:var(--muted);font-family:var(--mono);font-size:12px}.ev.dl-row{color:var(--red);font-weight:600}
+.hs-ok{color:var(--ok)}.hs-bad{color:var(--red)}
+@media(max-width:760px){.hide-sm{display:none}}
+</style>
+<style>
+.cd{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}.cd .card{min-width:110px;text-align:center}.cd b{display:block;font:500 46px/1 var(--display);color:var(--gold)}.cd span{font-size:12px;color:var(--muted)}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line-soft)}.ck input{margin-top:4px;width:18px;height:18px;accent-color:var(--gold)}.ck.done .tx{text-decoration:line-through;color:var(--faint)}.ck .tx small{display:block;color:var(--muted);font-size:12.5px}
+.tl{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}.tl.red{background:var(--red)}.tl.orange{background:#e8a33d}.tl.green{background:var(--ok)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="back" href="/">← Planner</a><span class="save" id="save">Loading…</span></div>
+  <div class="eyebrow">Project · Shopify dropshipping</div>
+  <h1>AmberHaven</h1>
+  <p class="lede">A dark, luxe candle warmer lamp store at amberhaven.store. One hero product, the Haven Candle Warmer Lamp, sold through Meta and TikTok ads to candle lovers aged 25–45.</p>
+  <div class="cd" id="cd"></div>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="main"></main>
+</div>
+<script>
+const SEED=/*SEED*/null;
+const SLUG="amberhaven";
+const UNIT_COST=16.75; // product + shipping (~$15 midpoint) + payment fees, per order; update once the supplier is picked
+const TABS=[["plan","Launch plan"],["deadlines","Deadlines"],["store","Store & ads"],["sales","Sales log"],["notes","Notes"]];
+let S=null,ver=0,timer=null,MS=[],tab=(()=>{try{return localStorage.getItem("ah-tab")||"plan"}catch(e){return "plan"}})();
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const fmtD=s=>new Date(s+"T12:00").toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"});
+const safeHref=u=>/^https?:\/\//i.test(u||"");
+const lab=()=>$("#save");
+async function api(method,body,path){
+  const r=await fetch("/api/project/"+SLUG+(path||""),{method,credentials:"same-origin",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined});
+  if(r.status===401){location.href="/login";throw new Error("signed out")}
+  const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||("HTTP "+r.status));return d;
+}
+function fresh(){const st={};((SEED&&SEED.done)||[]).forEach(k=>st[k]=true);return {v:1,steps:st,msDone:{},sales:[],notes:""}}
+function save(){lab().textContent="Saving…";clearTimeout(timer);timer=setTimeout(async()=>{try{const d=await api("PUT",S);ver=d.version;lab().textContent="Saved"}catch(e){lab().textContent="Couldn’t save. Check your connection."}},400)}
+
+function countdown(){const el=$("#cd");if(!el||!S)return;const s=S.sales,rev=s.reduce((a,x)=>a+(+x.rev||0),0),spend=s.reduce((a,x)=>a+(+x.spend||0),0),ord=s.reduce((a,x)=>a+(+x.orders||0),0);
+  el.innerHTML=[[ord,"orders"],["$"+rev.toFixed(0),"revenue"],["$"+spend.toFixed(0),"ad spend"],[(rev-spend-ord*UNIT_COST<0?"−$":"$")+Math.abs(rev-spend-ord*UNIT_COST).toFixed(0),"est. profit"],[ord?"$"+(spend/ord).toFixed(0):"—","cost per sale"]].map(([n,l])=>`<div class="card"><b>${n}</b><span>${l}</span></div>`).join("")}
+
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,v])=>`<button data-tab="${k}" class="${k===tab?"on":""}">${v}</button>`).join("")}
+function render(){renderTabs();const f={plan:vPlan,deadlines:vDead,store:vStore,sales:vSales,notes:vNotes}[tab]||vPlan;$("#main").innerHTML=f();countdown()}
+
+function vPlan(){const steps=(SEED&&SEED.steps)||[],done=steps.filter(s=>S.steps[s.id]).length;
+  return `<section><div class="row"><h2 style="margin:0">Launch plan</h2><span class="muted small">${done} of ${steps.length} done</span></div>
+  <div class="bar"><i style="width:${steps.length?Math.round(done/steps.length*100):0}%"></i></div>
+  ${(SEED&&SEED.phases||[]).map(ph=>`<h3>${esc(ph)}</h3>`+steps.filter(s=>s.phase===ph).map(s=>`<label class="ck ${S.steps[s.id]?"done":""}"><input type="checkbox" data-step="${s.id}" ${S.steps[s.id]?"checked":""}><span class="tx">${esc(s.t)}${s.d?`<small>${esc(s.d)}</small>`:""}</span></label>`).join("")).join("")}</section>`}
+
+function light(m){const t=ymd(new Date()),tm=ymd(new Date(Date.now()+864e5));if(m.done)return "";return m.due<t?"red":m.due<=tm?"orange":"green"}
+function vDead(){return `<section><h2>Deadlines</h2><p class="muted small">These show on your planner calendar and Apple Calendar. Tick them off here.</p>
+  ${MS.length?MS.slice().sort((a,b)=>a.due<b.due?-1:1).map(m=>`<label class="ck ${m.done?"done":""}"><input type="checkbox" data-ms="${esc(m.id)}" ${m.done?"checked":""}><span class="tx">${light(m)?`<span class="tl ${light(m)}"></span>`:""}<b>${fmtD(m.due)}</b> · ${esc(m.t)}</span></label>`).join(""):`<p class="faint">Loading deadlines…</p>`}</section>`}
+
+function vStore(){const h=SEED||{};
+  return `<section><h2>Store & ads</h2><h3>Links</h3><div class="row">${(h.links||[]).map(([n,u])=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(n)} ↗</a>`).join("")}</div>
+  <h3>Per-sale numbers (estimates)</h3><div class="tbl" style="max-height:none"><table><tbody>${(h.econ||[]).map(([k,v])=>`<tr><td>${esc(k)}</td><td style="text-align:right;font-weight:600">${esc(v)}</td></tr>`).join("")}</tbody></table></div>
+  <h3>Kill and scale rules</h3><ul>${(h.rules||[]).map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
+  <div class="callout">${esc(h.daily||"")}</div>
+  <div class="callout warn">Ads cost the most from Black Friday through Cyber Monday (Nov 27 – Dec 1). Start small and keep the gift angle running until about Dec 15, the shipping cutoff.</div></section>`}
+
+function vSales(){const c=S.sales;
+  return `<section><p class="muted small">One row per day. Estimated profit = revenue − ad spend − $${UNIT_COST} per order for product, shipping and fees.</p>
+  <div class="row" style="margin:12px 0 16px"><button class="btn pri" data-act="add">+ Add day</button></div>
+  <div class="tbl"><table><thead><tr><th>Date</th><th>Orders</th><th>Revenue $</th><th>Ad spend $</th><th>Est. profit</th><th>Note</th><th></th></tr></thead><tbody>
+  ${c.map(x=>{const p=(+x.rev||0)-(+x.spend||0)-(+x.orders||0)*UNIT_COST;return `<tr data-id="${x.id}"><td><input type="date" class="ctl" data-f="date" value="${esc(x.date)}" style="min-width:130px"></td>
+  <td><input class="ctl" data-f="orders" inputmode="numeric" value="${esc(x.orders)}" style="min-width:60px;width:70px"></td>
+  <td><input class="ctl" data-f="rev" inputmode="decimal" value="${esc(x.rev)}" style="min-width:80px;width:90px"></td>
+  <td><input class="ctl" data-f="spend" inputmode="decimal" value="${esc(x.spend)}" style="min-width:80px;width:90px"></td>
+  <td class="${p<0?"hs-bad":"hs-ok"}" style="font-weight:600">${p<0?"−":""}$${Math.abs(p).toFixed(2)}</td>
+  <td><input class="ctl" data-f="note" value="${esc(x.note)}" placeholder="Which ad, what changed…" style="min-width:180px"></td>
+  <td><button class="btn" data-act="del" title="Delete">✕</button></td></tr>`}).join("")||`<tr><td colspan="7" class="faint">No sales days yet. Add one once ads are running.</td></tr>`}
+  </tbody></table></div></section>`}
+
+function vNotes(){return `<section><h2>Notes</h2><textarea id="notes" rows="16" placeholder="Supplier notes, ad ideas, what’s working…">${esc(S.notes)}</textarea></section>`}
+
+document.addEventListener("click",e=>{const t=e.target;
+  if(t.dataset.tab){tab=t.dataset.tab;try{localStorage.setItem("ah-tab",tab)}catch(e){}render();return}
+  if(t.dataset.act==="add"){S.sales.unshift({id:uid(),date:ymd(new Date()),orders:"",rev:"",spend:"",note:""});save();render();return}
+  if(t.dataset.act==="del"){const tr=t.closest("tr");if(tr&&confirm("Delete this day?")){S.sales=S.sales.filter(x=>x.id!==tr.dataset.id);save();render()}return}
+});
+document.addEventListener("change",e=>{const t=e.target;
+  if(t.dataset.step){if(t.checked)S.steps[t.dataset.step]=true;else delete S.steps[t.dataset.step];save();render();return}
+  if(t.dataset.ms){if(t.checked)S.msDone[t.dataset.ms]=true;else delete S.msDone[t.dataset.ms];const m=MS.find(x=>x.id===t.dataset.ms);if(m)m.done=t.checked;save();render();return}
+  if(["date","orders","rev","spend"].includes(t.dataset.f)){render()}});
+document.addEventListener("input",e=>{const t=e.target;
+  if(t.id==="notes"){S.notes=t.value;save();return}
+  const tr=t.closest&&t.closest("tr[data-id]");if(tr&&t.dataset.f){const x=S.sales.find(c=>c.id===tr.dataset.id);if(x){x[t.dataset.f]=t.value;save()}}});
+
+async function loadMS(){try{const r=await fetch("/api/project/"+SLUG+"/milestones",{credentials:"same-origin"});if(!r.ok)return;const d=await r.json();MS=(d.milestones||[]).map(m=>({...m,done:!!S.msDone[m.id]}));if(tab==="deadlines")render()}catch(e){}}
+setInterval(async()=>{if(document.hidden||!S)return;try{const r=await fetch("/api/project/"+SLUG,{credentials:"same-origin"});if(!r.ok)return;const d=await r.json();const a=document.activeElement;
+  if(d.version>ver&&!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))){S=Object.assign(fresh(),d.data);ver=d.version;render()}}catch(e){}},30000);
+(async()=>{try{const d=await api("GET");S=Object.assign(fresh(),d.data||{});ver=d.version||0;render();lab().textContent="Saved";if(!d.data)save();loadMS()}catch(e){lab().textContent="Couldn’t load: "+e.message}})();
+</script>
+</body>
+</html>

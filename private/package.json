@@ -1,0 +1,13 @@
+{
+  "name": "brandon-life-planner",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Brandon's private Life Planner (password, synced) \u2014 rebuild the page locally with: node build.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

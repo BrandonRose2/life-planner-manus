@@ -1,0 +1,23 @@
+{"phases":["Set up the store","Get ready to sell","Launch and test"],
+"steps":[
+{"id":"a1","phase":"Set up the store","t":"Buy amberhaven.store and point it at the store","d":"Done."},
+{"id":"a2","phase":"Set up the store","t":"Create the Haven lamp product and Candle Warmers collection","d":"$49.95 (compare-at $69.95), three finishes. Draft, no images yet."},
+{"id":"a3","phase":"Set up the store","t":"Rename the store from GlowMelt to AmberHaven","d":"Shopify admin → Settings → Store details."},
+{"id":"a4","phase":"Set up the store","t":"Pick a Shopify plan","d":"Basic."},
+{"id":"a5","phase":"Set up the store","t":"Install AutoDS","d":"Supplier app."},
+{"id":"a6","phase":"Get ready to sell","t":"In AutoDS, link the supplier to the Haven lamp and import its images","d":"Target product + shipping cost: $12–18."},
+{"id":"a7","phase":"Get ready to sell","t":"Turn on Shopify Payments","d":"Settings → Payments."},
+{"id":"a8","phase":"Get ready to sell","t":"Generate the policies: refund, shipping, privacy, terms","d":"Settings → Policies → generate."},
+{"id":"a9","phase":"Get ready to sell","t":"Theme in charcoal and gold, homepage hero, logo","d":"Dawn or a dark preset. Claude can write the copy."},
+{"id":"a10","phase":"Get ready to sell","t":"Place a test order to yourself, then refund it","d":""},
+{"id":"a11","phase":"Get ready to sell","t":"Create the Meta and TikTok business accounts and install the pixels","d":"Through the Shopify apps. Uses your card."},
+{"id":"a12","phase":"Launch and test","t":"Create the HAVEN15 code and set the product to ACTIVE","d":"Claude does this after you say go."},
+{"id":"a13","phase":"Launch and test","t":"Launch the ad tests at about $60/day total","d":"Hooks, scripts and captions are in ads/creative.md."},
+{"id":"a14","phase":"Launch and test","t":"Apply the kill and scale rules every day","d":"See the Store tab."}
+],
+"done":["a1","a2","a3","a4","a5"],
+"rules":["Test budget: $300–600 total over 7–10 days.","Kill a creative after $20 spent with a click-through rate under 1%.","Kill a creative after $40 spent with no add-to-cart.","Scale a creative (+20% budget every 48h) while its CPA stays under $20 for 3 days running.","Kill the product if $300 is spent with no CPA under $35."],
+"econ":[["Price","$49.95"],["Product + shipping (target)","$12–18"],["Payment fees","~$1.75"],["Margin before ads","~$30–36"],["Break-even CPA","~$30"],["Target CPA","under $20"]],
+"links":[["Store","https://amberhaven.store"],["Shopify admin","https://admin.shopify.com/store/glowmelt-5"],["GitHub repo","https://github.com/BrandonRose2/amberhaven"],["AutoDS","https://platform.autods.com"],["Meta Ads Manager","https://adsmanager.facebook.com"],["TikTok Ads","https://ads.tiktok.com"]],
+"daily":"amberhaven-daily runs at 8 AM while the Claude app is open. It only reads the store and reports orders, revenue, late shipments, stock problems and estimated profit, with a 7-day trend on Mondays."
+}

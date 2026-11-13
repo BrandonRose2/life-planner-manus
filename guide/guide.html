@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Life Planner – How to Use It</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#121214; --surface:#19191c; --line:#2c2c31; --rule:#26262b;
+  --fg:#ebe6dc; --muted:#9a968e; --faint:#66635e; --gold:#c9a96a;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Hanken Grotesk",-apple-system,"Helvetica Neue",sans-serif;
+  --mono:"JetBrains Mono",Menlo,monospace;
+}
+@page{size:Letter;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:10.5pt/1.55 var(--body)}
+.page{width:8.5in;height:11in;padding:.62in .7in .55in;position:relative;overflow:hidden;page-break-after:always;background:var(--bg)}
+.page:last-child{page-break-after:auto}
+.glow{position:absolute;inset:0 0 auto 0;height:2.6in;background:radial-gradient(70% 120% at 72% 0%,rgba(240,180,106,.22),transparent 60%),linear-gradient(180deg,#1a140f 0%,transparent 100%)}
+.content{position:relative}
+
+.top{display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;border:1px solid rgba(201,169,106,.45);border-radius:16px;padding:14px 18px;background:linear-gradient(160deg,rgba(201,169,106,.14),rgba(201,169,106,.02) 70%)}
+.coin{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(130% 130% at 28% 18%,#f4e6c6 0%,#c9a96a 42%,#6e5a33 100%);
+  box-shadow:inset 0 1px 0 #f1e2bf,inset 0 -3px 5px #5a4826,0 0 0 1px #6e5a33;color:#2c2312}
+.coin svg{width:26px;height:26px}
+.top .k{font:600 8pt var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.top .t{font:500 19pt/1.1 var(--display);margin-top:2px}
+.top .u{font:8pt var(--mono);color:var(--muted);margin-top:4px}
+.top .go{margin-left:auto;font:600 9pt var(--body);color:var(--gold);white-space:nowrap}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cards .top{padding:12px 14px;gap:12px}
+.cards .top .t{font-size:16pt}
+.cards .top .u{font-size:7pt}
+.demo-card{border-color:#e0785a;background:linear-gradient(160deg,rgba(224,120,90,.28),rgba(224,120,90,.05) 75%)}
+.demo-card .k{color:#f29b7b}
+.coin.red{background:radial-gradient(130% 130% at 28% 18%,#ffd9c9 0%,#e0785a 42%,#7a2f1c 100%);box-shadow:inset 0 1px 0 #ffd0bd,inset 0 -3px 5px #6a2716,0 0 0 1px #7a2f1c;color:#3a120a}
+.coin.red svg{margin-left:3px}
+.btn{display:inline-block;margin-top:6px;font:600 8pt var(--body);letter-spacing:.06em;color:#1a0d08;background:#f29b7b;border-radius:999px;padding:3px 10px}
+.btn.gold{background:var(--gold);color:#1d170c}
+.eyebrow{font:600 8pt var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+h1{font:500 46pt/1 var(--display);margin:.3in 0 0;letter-spacing:-.01em}
+.lede{font:italic 400 15pt/1.4 var(--display);max-width:5.6in;margin:12px 0 0;border-left:1.5px solid var(--gold);padding-left:14px}
+
+.start{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:.24in}
+.step{background:var(--surface);border:1px solid #232327;border-radius:10px;padding:12px 14px}
+.step .n{font:500 22pt/1 var(--display);color:var(--gold)}
+.step b{display:block;font-weight:600;margin:6px 0 2px}
+.step p{margin:0;color:var(--muted);font-size:9.5pt}
+
+h2{font:500 22pt/1.1 var(--display);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+h2 .hash{font:400 10pt var(--mono);color:var(--faint)}
+section{margin-top:.24in}
+ul.ruled{list-style:none;margin:0;padding:0}
+ul.ruled li{display:flex;gap:11px;align-items:flex-start;padding:4.5px 0;border-bottom:1px solid var(--rule)}
+.box{flex:none;width:12px;height:12px;margin-top:3.5px;border:1.3px solid var(--fg);border-radius:2px;background:rgba(201,169,106,.35)}
+.box.o{background:rgba(240,150,74,.45)}.box.g{background:rgba(120,207,116,.45)}.box.p{background:rgba(238,106,174,.45)}
+ul.ruled b{font-weight:600}
+kbd{font:8.5pt var(--mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:#1d1d21;color:var(--fg)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.note{margin-top:.28in;background:var(--surface);border:1px solid #232327;border-radius:10px;padding:14px 16px;display:flex;gap:14px}
+.note .ic{font:500 22pt/1 var(--display);color:var(--gold)}
+.note p{margin:0;color:var(--muted)}
+.note b{color:var(--fg)}
+.foot{position:absolute;left:.7in;right:.7in;bottom:.4in;display:flex;justify-content:space-between;font:8pt var(--body);color:var(--faint);letter-spacing:.06em}
+.rhythm{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:4px}
+.rhythm .tm{font:9pt var(--mono);color:var(--gold);padding-top:2px}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="glow"></div>
+  <div class="content">
+    <div class="cards">
+      <a class="top demo-card" href="https://life-planner.brandon-rose.com#demo">
+        <span class="coin red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5Z"/></svg></span>
+        <span>
+          <div class="k">Start here · 3 min</div>
+          <div class="t">Demo Video</div>
+          <span class="btn">▶ Watch the demo</span>
+        </span>
+      </a>
+      <a class="top" href="https://life-planner.brandon-rose.com">
+        <span class="coin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="m7.5 9 1.5 1.5 3-3M14 9h3M7.5 15l1.5 1.5 3-3M14 15h3"/></svg></span>
+        <span>
+          <div class="k">Your planner</div>
+          <div class="t">Open the Life Planner</div>
+          <span class="btn gold">Open it →</span>
+        </span>
+      </a>
+    </div>
+    <div style="margin-top:8px;text-align:right;font:8pt var(--mono);color:var(--muted)">life-planner.brandon-rose.com</div>
+
+    <h1>Life Planner</h1>
+    <div class="eyebrow" style="margin-top:10px">How to use it</div>
+    <p class="lede">One page for the day: the one thing that matters, focused time to do it, and simple checklists for everything else.</p>
+
+    <div class="start">
+      <div class="step"><div class="n">1</div><b>No sign-up</b><p>Nothing to create or install. It works on your phone, tablet or computer.</p></div>
+      <div class="step"><div class="n">2</div><b>Open the link</b><p>Tap the gold icon above. Your own planner opens, ready to use.</p></div>
+      <div class="step"><div class="n">3</div><b>Start writing</b><p>Everything saves as you type, right in your browser.</p></div>
+    </div>
+
+    <section>
+      <h2><span class="hash">##</span>Focus: one thing at a time</h2>
+      <ul class="ruled">
+        <li><span class="box"></span><span><b>Name your one thing.</b> The big line at the top. Every focus block today should move it forward.</span></li>
+        <li><span class="box"></span><span><b>Block your day.</b> Tap <i>+ Add block</i>, set a start time and a length (an hour or two works best), and write the single task for it.</span></li>
+        <li><span class="box"></span><span><b>Follow the Now card.</b> It shows the block you’re in, the minutes left and what’s next. Stay on that one task until the bar fills.</span></li>
+        <li><span class="box"></span><span><b>No plan yet?</b> Tap <i>Start a 90-min block now</i>. Tomorrow, <i>Copy yesterday’s blocks</i> sets up your day in one tap.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="hash">##</span>Lists, like a paper notepad</h2>
+      <ul class="ruled">
+        <li><span class="box o"></span><span><b>Type on any empty line</b> and press <kbd>Enter</kbd> for the next one.</span></li>
+        <li><span class="box g"></span><span><b>Tick the box</b> when it’s done. <i>Clear checked</i> tidies the list.</span></li>
+        <li><span class="box p"></span><span><b>Delete an item</b> by emptying it and pressing <kbd>Backspace</kbd>, or tap ✕.</span></li>
+        <li><span class="box"></span><span><b>Make it yours:</b> rename any list, tap the color square to change its highlighter, ⧉ copies it as a checklist you can paste anywhere, and <i>+ New list</i> adds more.</span></li>
+      </ul>
+    </section>
+  </div>
+  <div class="foot"><span>LIFE PLANNER</span><span>1 / 2</span></div>
+</div>
+
+<div class="page">
+  <div class="content">
+    <div class="two">
+      <section style="margin-top:0">
+        <h2><span class="hash">##</span>Today</h2>
+        <ul class="ruled">
+          <li><span class="box"></span><span><b>Intention:</b> one line on what would make today well spent.</span></li>
+          <li><span class="box"></span><span><b>Top three priorities.</b> Three, never more.</span></li>
+          <li><span class="box"></span><span><b>Scratch notes</b> for calls, ideas and reminders.</span></li>
+        </ul>
+      </section>
+      <section style="margin-top:0">
+        <h2><span class="hash">##</span>Habits &amp; goals</h2>
+        <ul class="ruled">
+          <li><span class="box"></span><span><b>Habits:</b> add one, then tap a day’s box when you do it. The week score fills in.</span></li>
+          <li><span class="box"></span><span><b>Goals:</b> one card per goal for the month. Slide the bar as you go.</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h2><span class="hash">##</span>Make it beautiful</h2>
+      <ul class="ruled">
+        <li><span class="box"></span><span><b>Drop in a photo</b>, or a .zip full of them, anywhere on the page. It becomes your banner, and the colors of the whole planner shift to match it.</span></li>
+        <li><span class="box"></span><span><b>Backdrop</b> (button at the top) shows all your photos. Tap one to switch, or turn on <i>Rotate photos daily</i>.</span></li>
+        <li><span class="box"></span><span><b>Theme</b> switches between dark and light.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="hash">##</span>Your shortcuts</h2>
+      <ul class="ruled">
+        <li><span class="box"></span><span><b>The round icons in the top right</b> open the sites you use most: e-mail, calendar, Spotify, YouTube and more.</span></li>
+        <li><span class="box"></span><span><b>Tap the gear</b> to open Admin. Add your own links, rename them, reorder them, or pick a new icon.</span></li>
+        <li><span class="box"></span><span><b>Icon style:</b> <i>Metallic</i> matches your photo’s colors. <i>App colors</i> uses each app’s own colors, like Spotify green and YouTube red.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="hash">##</span>A simple daily rhythm</h2>
+      <div class="rhythm">
+        <span class="tm">Morning</span><div>Write your intention and three priorities. Block two focus sessions for your one thing.</div>
+        <span class="tm">All day</span><div>Follow the Now card. When something else comes up, drop it on a list and get back to the block.</div>
+        <span class="tm">Evening</span><div>Tick off habits, clear checked items, and nudge your goals forward.</div>
+      </div>
+    </section>
+
+    <div class="note">
+      <span class="ic">✦</span>
+      <p><b>Private to you.</b> Your planner saves in your own browser, so no one else can see it, including the person who sent you this. To use it on another device, open Admin, tap <i>Export my planner</i>, then <i>Import a backup</i> on the other device. Tip: add it to your home screen for one-tap access.</p>
+    </div>
+  </div>
+  <div class="foot"><span>LIFE PLANNER</span><span>2 / 2</span></div>
+</div>
+
+</body>
+</html>

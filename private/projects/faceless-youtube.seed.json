@@ -1,0 +1,246 @@
+{
+ "videos": [
+  {
+   "n": 1,
+   "topic": "Boston's Big Dig ceiling collapse",
+   "hook": "Glue holding 26 tons of concrete slowly crept and failed",
+   "proof": "Industrial Empire: 882K views, 47x breakout (4K-sub channel)"
+  },
+  {
+   "n": 2,
+   "topic": "Hyatt Regency walkway collapse, 1981",
+   "hook": "One rod change killed 114 people",
+   "proof": "Industrial Empire video on the same story"
+  },
+  {
+   "n": 3,
+   "topic": "St. Francis Dam, 1928",
+   "hook": "Nobody independent checked it",
+   "proof": "Failure Case: 8x breakout"
+  },
+  {
+   "n": 4,
+   "topic": "Oroville Dam crisis, 2017",
+   "hook": "America's tallest dam nearly failed",
+   "proof": "Why Stuff Fails: 57.7K views, 12x breakout"
+  },
+  {
+   "n": 5,
+   "topic": "Flixborough chemical plant, 1974",
+   "hook": "A temporary pipe caused the explosion",
+   "proof": "Forgotten Disasters: 70.2K views, 5.3x breakout"
+  },
+  {
+   "n": 6,
+   "topic": "Quebec Bridge collapse, 1907",
+   "hook": "Warnings ignored; 75 workers died",
+   "proof": "Steel & Sacrifice: 25.3K views, 5.1x breakout"
+  },
+  {
+   "n": 7,
+   "topic": "Willow Island cooling tower, 1978",
+   "hook": "51 died and nobody was charged",
+   "proof": "Guardian Learning: 21x breakout"
+  },
+  {
+   "n": 8,
+   "topic": "Alexander L. Kielland oil rig, 1980",
+   "hook": "A hidden fatigue crack sank it",
+   "proof": "Guardian Learning: 7.1x breakout"
+  },
+  {
+   "n": 9,
+   "topic": "Tacoma Narrows Bridge",
+   "hook": "Explain the physics of how wind tore it apart",
+   "proof": "Failure Atlas: 4.3x breakout"
+  },
+  {
+   "n": 10,
+   "topic": "List: 7 Cost-Cutting Shortcuts That Killed Hundreds",
+   "hook": "Round-up format",
+   "proof": "FAN FACTS 'cost cutting blunders': 53.9K views, 8.3x breakout"
+  }
+ ],
+ "keywords": [
+  {
+   "k": "engineering disasters",
+   "vol": 139574,
+   "comp": 60,
+   "trend": "+84%",
+   "use": "Main channel keyword"
+  },
+  {
+   "k": "engineering disasters in history",
+   "vol": 4677,
+   "comp": 28,
+   "trend": "Flat",
+   "use": "Lowest competition: use in titles/tags"
+  },
+  {
+   "k": "worst engineering disasters",
+   "vol": 4634,
+   "comp": 50,
+   "trend": "Flat",
+   "use": "Good for list videos"
+  },
+  {
+   "k": "construction fails",
+   "vol": 99819,
+   "comp": 72,
+   "trend": "Flat",
+   "use": "High volume, tougher"
+  },
+  {
+   "k": "failed megaprojects",
+   "vol": 68419,
+   "comp": 56,
+   "trend": "Flat",
+   "use": "Crossover topic"
+  },
+  {
+   "k": "mechanical engineering",
+   "vol": 96665,
+   "comp": 50,
+   "trend": "Flat",
+   "use": "Broad support keyword"
+  },
+  {
+   "k": "engineering fails",
+   "vol": 22388,
+   "comp": 60,
+   "trend": "-37%",
+   "use": "Declining"
+  },
+  {
+   "k": "engineering mistakes",
+   "vol": 11586,
+   "comp": 64,
+   "trend": "Flat",
+   "use": ""
+  },
+  {
+   "k": "mega construction",
+   "vol": 30694,
+   "comp": 48,
+   "trend": "+34%",
+   "use": "Growing"
+  },
+  {
+   "k": "how things are made",
+   "vol": 82883,
+   "comp": 50,
+   "trend": "+69%",
+   "use": "Growing; possible second series"
+  }
+ ],
+ "breakouts": [
+  {
+   "title": "Boston Suspended 26 Tons of Concrete With Glue\u2014Then the Glue Began to Creep",
+   "ch": "Industrial Empire",
+   "subs": 4000,
+   "views": 881700,
+   "x": 47,
+   "len": "17:36",
+   "url": "https://www.youtube.com/watch?v=tXoLMmY7AoA"
+  },
+  {
+   "title": "When Heavy Machinery Goes Wrong | Extreme Fails",
+   "ch": "Dopamino",
+   "subs": 690,
+   "views": 455000,
+   "x": 24,
+   "len": "12:12",
+   "url": "https://www.youtube.com/watch?v=b4NVYpcr1OM"
+  },
+  {
+   "title": "Engineering Failures That Changed Everything",
+   "ch": "National Geographic UK",
+   "subs": 459000,
+   "views": 120800,
+   "x": 5.4,
+   "len": "6:05",
+   "url": "https://www.youtube.com/watch?v=S_g0gwV3gQg"
+  },
+  {
+   "title": "Hidden Venue Hazards That Turned Luxury Weddings into Disasters",
+   "ch": "Life Terminus",
+   "subs": 8200,
+   "views": 78400,
+   "x": 36,
+   "len": "33:14",
+   "url": "https://www.youtube.com/watch?v=t0ZOx6mro9E"
+  },
+  {
+   "title": "(1974) The Flixborough Disaster: The Deadliest Engineering Mistake Ever",
+   "ch": "Forgotten Disasters",
+   "subs": 7300,
+   "views": 70200,
+   "x": 5.3,
+   "len": "26:28",
+   "url": "https://www.youtube.com/watch?v=W6dhIXNctAc"
+  },
+  {
+   "title": "Danger at America's tallest dam. The Oroville Dam crisis.",
+   "ch": "Why Stuff Fails",
+   "subs": 2200,
+   "views": 57700,
+   "x": 12,
+   "len": "27:48",
+   "url": "https://www.youtube.com/watch?v=O1kC2sYLKRs"
+  },
+  {
+   "title": "cost cutting blunders",
+   "ch": "FAN FACTS",
+   "subs": 6000,
+   "views": 53900,
+   "x": 8.3,
+   "len": "21:03",
+   "url": "https://www.youtube.com/watch?v=1-hHEh6Zc9g"
+  },
+  {
+   "title": "The Machines That Failed At The Worst Possible Moment",
+   "ch": "Grit History",
+   "subs": 17900,
+   "views": 50500,
+   "x": 18,
+   "len": "40:19",
+   "url": "https://www.youtube.com/watch?v=gZ8lMpzYzhw"
+  },
+  {
+   "title": "8 Most DANGEROUS Planes From The 1960s",
+   "ch": "Skyline Engines",
+   "subs": 1600,
+   "views": 29200,
+   "x": 44,
+   "len": "18:28",
+   "url": "https://www.youtube.com/watch?v=Y_ZvhkciNLs"
+  },
+  {
+   "title": "The 20,000-Ton Cantilever Truss: Steel Collapse That Killed 75 Workers in 15 Seconds",
+   "ch": "Steel & Sacrifice",
+   "subs": 8400,
+   "views": 25300,
+   "x": 5.1,
+   "len": "35:10",
+   "url": "https://www.youtube.com/watch?v=DGuvDmEHOgM"
+  },
+  {
+   "title": "Every Man on the Scaffold Died. The Concrete Under Them Was 20 Hours Old.",
+   "ch": "No Room For Error",
+   "subs": 23,
+   "views": 2400,
+   "x": 37,
+   "len": "18:36",
+   "url": "https://www.youtube.com/watch?v=K1zPnbV9r68"
+  },
+  {
+   "title": "51 Men Died. Nobody Was Charged. | Willow Island 1978",
+   "ch": "Guardian Learning",
+   "subs": 42,
+   "views": 1600,
+   "x": 21,
+   "len": "9:35",
+   "url": "https://www.youtube.com/watch?v=FJ3A2pGk1KA"
+  }
+ ]
+}
