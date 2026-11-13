@@ -11,8 +11,9 @@
 - [x] Guard shared local/remote persistence, owner-cache fallback, viewer seed writes, and progress controls. Preserve the original server authentication/authorization.
 - [x] Run isolated synthetic Chromium layout/interaction/server authorization checks at 320, 375, 390, 430, 768, and 1280px; no production test state or external test requests.
 - [x] Review the integrated patch and fix the inert Retry link and mobile header squeeze found during final checks.
-- [ ] Publish the completed patch commit to the created GitHub repository.
-- [ ] Verify the existing Railway service's domain/source/build/root settings and preserve its volume/environment.
+- [x] Publish the completed patch commit `b298f91` to the private GitHub repository.
+- [x] Identify the existing Railway `brandon-planner` service: planner.brandon-rose.com, root `/`, Railpack, existing volume attached; do not change its domain, volume, environment, or plan. Read-only preflight confirms the supplied ZIP exactly matches the currently deployed source.
+- [ ] Complete Railway's separate GitHub App authorization. Its repository connection flow requires a GitHub browser sign-in; the Manus GitHub connector is already working.
 - [ ] Deploy the tested patch to the existing main/shared service and verify live pages read-only.
 - [ ] Owner checks native iPhone Safari and actual soft-keyboard behavior after deployment; automated Chromium/composition tests are not equivalent.
 
