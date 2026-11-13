@@ -1,27 +1,31 @@
-# Existing planner deployment
+# Existing planner deployment — complete
 
-November 13, 2026: tested patch commit `b298f91` is published at https://github.com/BrandonRose2/life-planner-manus. The repository is private. **The fixes are not live yet.**
+**The mobile fixes are live on https://planner.brandon-rose.com and its existing shared link.** Deployed and verified November 13, 2026, approximately 10:35 Pacific.
 
-The existing Railway `life-planner` project contains the target `brandon-planner` service at https://planner.brandon-rose.com, with its existing volume attached. The similarly named service at `life-planner.brandon-rose.com` is a different service and remains untouched. The target's active deployment was a CLI upload; settings showed root `/`, Railpack, and no custom build/start override.
+## Source and service
 
-A read-only preflight rebuilt the supplied ZIP and compared its generated main HTML with the live site's authenticated HTML: exact match, including a fresh check on November 13 at 10:14 Pacific. Only a canonical state checksum/version was recorded outside the repository. No production state contents or secrets were committed, and no production writes were made.
+Private repository: https://github.com/BrandonRose2/life-planner-manus. Implementation commit: `b298f91`. The live deployment used source commit `7f6634f`, which adds documentation only after the implementation.
 
-## Current blocker
+Railway deployment: `e8ac2582-1d2c-4fbf-a998-3faea09a8959`, in the existing `life-planner` project, existing **`brandon-planner`** service. The service at `life-planner.brandon-rose.com` is different and was not changed.
 
-The exact repository `BrandonRose2/life-planner-manus` and `main` branch are selected on the existing service. **These two changes are staged, not deployed.** Review confirmed that only this service's Repo and Branch settings would change; no domain, volume, environment, resource-plan, or other-service changes are staged.
+Only two service settings were applied: Repo `BrandonRose2/life-planner-manus` and Branch `main`. The domain, existing attached volume, environment variables, credentials, shared/feed keys, resource limits, and service plan were left unchanged. The app remains the original dependency-free Node server with root build `npm run build` and start `npm start`. Authentication/server code and data schema were not modified.
 
-Railway disables Deploy and displays this permission warning:
+## Verified live
 
-> No project member has access to this GitHub repository. Check if the GitHub Railway App is installed and project members have their GitHub accounts connected.
+The deployed main planner, Corners Cut, shared planner, and shared Corners Cut HTML each exactly match the locally generated tested build. All 24 live page/width cases passed at 320, 375, 390, 430, 768, and 1280px.
 
-The Manus GitHub connector works and has already published the repo. It does not authorize Railway's separate GitHub App. The repository picker can list the repo without having the app permissions needed to deploy it.
+There was no page-level horizontal overflow or clipped visible textarea in those cases. Main/shared quick links clear the date/title; shared quick links clear the viewer bar. No JavaScript runtime errors or mutating request attempts occurred. The health endpoint returned 200, viewer state reads returned 200, and viewer access to the private calendar-feed configuration remained denied with 403.
 
-The initial attempt opened the picker's Configure GitHub App entry rather than the repository entry. This was corrected with a native click on the exact repository row. The permission warning above is the verified blocker after that correction, not an assumption based on the initial sign-in page.
+The saved planner contents matched their pre-deployment canonical checksum both immediately after deployment and after the read-only rendering checks. Verification blocked all browser writes and all external browser asset requests. It made no production mutation requests, ran no setup/reset/reseed, and did not place synthetic data in production. State checksums/contents, session cookies, and the private share token are not included in the repository.
 
-## Continue safely
+## Authorization and future deployments
 
-Sign in to GitHub for the Railway App at https://github.com/apps/railway-app/installations/new and add `life-planner-manus` to its allowed repositories. If an existing installation lists other allowed repositories, leave those permissions unchanged. Do not grant broader repository access than needed. If Railway indicates that the project member's GitHub account is disconnected, reconnect that account as well. No upgrade is required.
+The initial picker interaction mistakenly opened Configure GitHub App; this was corrected. Selecting the actual repository exposed a verified Railway permission warning and disabled Deploy. The owner authorized Railway outside the disconnected Take Control session. Manual Deploy then became enabled, and the GitHub deployment completed successfully.
 
-Once Railway recognizes access, apply the reviewed Repo/Branch changes to the existing `brandon-planner` service. Keep repository root `/`. The root package.json provides build `npm run build` and start `npm start`; these invoke `node private/build.js` and `node private/server.js`. Keep the existing volume, environment, domain, limits, and credentials. Do not run setup/reset/reseed against production. Confirm build output includes main/view HTML and all project variants, then check service health and the main/shared pages read-only.
+The last settings check still displayed **Auto deploy unavailable** despite manual deployment working. Do not assume a future GitHub push deploys automatically; use the existing service's manual deployment workflow and verify success until that Railway indicator is resolved. Do not broaden repository permissions unnecessarily.
 
-Do not report the patch as live until the deployment succeeds and source/layout are verified on the existing URLs. Native iPhone Safari remains a separate final device check.
+For rollback, use the existing service's Railway deployment history without replacing its volume. The preceding live CLI deployment was `4766b129-2e10-4454-9747-9d1ca897f44a`; the untouched uploaded source also remains in Git baseline `81e38fc`. No schema migration is part of this patch.
+
+## Final device check
+
+The owner should reload both existing links in native iPhone Safari and check text while editing, long scratch/calendar notes, icon/header spacing, and Corners Cut. Chromium viewport and synthetic composition tests do not prove native iOS keyboard, hardware safe-area, screen-reader, or external-font behavior.

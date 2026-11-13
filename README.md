@@ -12,7 +12,7 @@ The shared build uses labelled, selectable static text and disables editing cont
 
 ## Status
 
-Source imported from the owner's ZIP on November 13, 2026. Private repository: https://github.com/BrandonRose2/life-planner-manus. The original uploaded source is preserved in baseline commit `81e38fc`; subsequent commits contain the patch and documentation. Local tests pass. Check [outcomes](TODO.md) for the separate live deployment status.
+**Live on the existing main and shared planner as of November 13, 2026.** Private repository: https://github.com/BrandonRose2/life-planner-manus. The original uploaded source is preserved in baseline commit `81e38fc`; patch commit `b298f91` contains the implementation. There are 116 passing isolated regression assertions plus 24 passing live page/width cases. The deployed main, Corners Cut, and both shared HTML variants exactly match the tested build; saved planner contents match the pre-deployment checksum. See [validation](docs/validation.md), [deployment notes](docs/deployment.md), and [outcomes](TODO.md). Native iPhone Safari remains a final owner/device check.
 
 ## Build and run
 

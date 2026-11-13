@@ -38,3 +38,13 @@ Run `npm run build`, then `python3 tests/regression.py --cdp http://127.0.0.1:92
 These are Chromium viewport tests, not native iPhone Safari/device tests. Real iOS soft keyboards, IME/paste behavior, safe-area hardware insets, external webfont loading, and end-to-end screen-reader/text-selection behavior still need a device check. The suite blocks external assets and uses font fallbacks. The CSS retains original fonts and includes font-loading remeasurement hooks, but those hooks are not proof of actual Safari font rendering.
 
 Live deployment and live read-only verification are tracked separately in `TODO.md`. No production data was changed by the validation suite.
+
+## Live deployment verification — completed
+
+On November 13, 2026, approximately 10:35 Pacific, the existing Railway `brandon-planner` service was deployed from the private GitHub repository. Deployment `e8ac2582-1d2c-4fbf-a998-3faea09a8959` is active; logs confirm the existing volume was mounted and `npm start` launched `node private/server.js` on port 8080.
+
+**All 24 live page/width cases passed**, covering main, Corners Cut, shared, and shared Corners Cut at 320/375/390/430/768/1280px. Each served HTML variant exactly matches its tested generated build. There were no page-level horizontal overflows, internally clipped visible textareas, header/icon overlaps, or JavaScript runtime errors in these cases.
+
+The saved planner contents matched their canonical pre-deployment checksum both after deployment and after rendering verification. All browser mutations were blocked; there were zero mutation attempts and zero production mutation requests. Health returned 200; viewer state reads returned 200; the private calendar-feed configuration remained denied to a viewer with 403. Only read requests were sent to production, and no production setup/reset/reseed or synthetic state injection occurred.
+
+Machine-readable, non-content results are in [live-validation.json](live-validation.json). This live verification used Chromium and blocked external browser asset requests, so the native iPhone Safari/keyboard/font/safe-area limitations above still apply.

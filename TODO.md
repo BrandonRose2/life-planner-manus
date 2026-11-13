@@ -13,9 +13,9 @@
 - [x] Review the integrated patch and fix the inert Retry link and mobile header squeeze found during final checks.
 - [x] Publish the completed patch commit `b298f91` to the private GitHub repository.
 - [x] Identify the existing Railway `brandon-planner` service: planner.brandon-rose.com, root `/`, Railpack, existing volume attached; do not change its domain, volume, environment, or plan. Read-only preflight confirms the supplied ZIP exactly matches the currently deployed source.
-- [x] Select the exact `BrandonRose2/life-planner-manus` repository and `main` branch for the existing service. These two changes are staged only, not applied.
-- [ ] Grant Railway's GitHub App access to this private repo. Railway explicitly reports: "No project member has access to this GitHub repository. Check if the GitHub Railway App is installed and project members have their GitHub accounts connected." Deploy is disabled; the Manus connector is working but does not grant Railway access.
-- [ ] Deploy the tested patch to the existing main/shared service and verify live pages read-only.
+- [x] Apply the exact `BrandonRose2/life-planner-manus` repository and `main` branch to the existing service. Reviewed and deployed only these two settings; domain, volume, environment, plan, and other service unchanged.
+- [x] Complete the authorization needed for manual GitHub deployment. After the owner authorized Railway, Deploy became enabled and a GitHub deployment was created. The auto-deploy indicator remained unavailable; do not assume subsequent pushes deploy automatically.
+- [x] Deploy the tested patch to the existing main/shared service and verify live pages read-only. Deployment `e8ac2582-1d2c-4fbf-a998-3faea09a8959`; all four served HTML variants exactly match the tested build; 24 live width/page cases pass; health 200; no runtime errors or mutating requests; saved planner contents match the pre-deployment checksum before and after verification.
 - [ ] Owner checks native iPhone Safari and actual soft-keyboard behavior after deployment; automated Chromium/composition tests are not equivalent.
 
 The November 10 audit is historical. The November 13 source includes a newer mobile mirror workaround that this patch replaces rather than layering over.
