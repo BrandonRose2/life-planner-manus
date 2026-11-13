@@ -13,7 +13,8 @@
 - [x] Review the integrated patch and fix the inert Retry link and mobile header squeeze found during final checks.
 - [x] Publish the completed patch commit `b298f91` to the private GitHub repository.
 - [x] Identify the existing Railway `brandon-planner` service: planner.brandon-rose.com, root `/`, Railpack, existing volume attached; do not change its domain, volume, environment, or plan. Read-only preflight confirms the supplied ZIP exactly matches the currently deployed source.
-- [ ] Complete Railway's separate GitHub App authorization. Its repository connection flow requires a GitHub browser sign-in; the Manus GitHub connector is already working.
+- [x] Select the exact `BrandonRose2/life-planner-manus` repository and `main` branch for the existing service. These two changes are staged only, not applied.
+- [ ] Grant Railway's GitHub App access to this private repo. Railway explicitly reports: "No project member has access to this GitHub repository. Check if the GitHub Railway App is installed and project members have their GitHub accounts connected." Deploy is disabled; the Manus connector is working but does not grant Railway access.
 - [ ] Deploy the tested patch to the existing main/shared service and verify live pages read-only.
 - [ ] Owner checks native iPhone Safari and actual soft-keyboard behavior after deployment; automated Chromium/composition tests are not equivalent.
 
